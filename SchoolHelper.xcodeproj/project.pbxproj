@@ -13,6 +13,10 @@
 		46F8F41125A98A01008888E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F3FC25A989FF008888E7 /* ContentView.swift */; };
 		46F8F41225A98A01008888E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F8F3FD25A98A01008888E7 /* Assets.xcassets */; };
 		46F8F41325A98A01008888E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F8F3FD25A98A01008888E7 /* Assets.xcassets */; };
+		46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F41E25A98A57008888E7 /* Dashboard.swift */; };
+		46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F41E25A98A57008888E7 /* Dashboard.swift */; };
+		46F8F42425A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
+		46F8F42525A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,8 @@
 		46F8F40A25A98A01008888E7 /* SchoolHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F8F40C25A98A01008888E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F8F40D25A98A01008888E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		46F8F41E25A98A57008888E7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		46F8F42325A98A86008888E7 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,8 @@
 			children = (
 				46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */,
 				46F8F3FC25A989FF008888E7 /* ContentView.swift */,
+				46F8F41E25A98A57008888E7 /* Dashboard.swift */,
+				46F8F42325A98A86008888E7 /* Classes.swift */,
 				46F8F3FD25A98A01008888E7 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -188,6 +196,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
+				46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */,
+				46F8F42425A98A86008888E7 /* Classes.swift in Sources */,
 				46F8F40E25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
+				46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */,
+				46F8F42525A98A86008888E7 /* Classes.swift in Sources */,
 				46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
