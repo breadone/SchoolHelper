@@ -10,7 +10,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            
+            Dashboard()
+                .tabItem {
+                    Image(systemName: "text.book.closed.fill")
+                    Text("Dashboard")
+                }
+            Classes()
+                .tabItem {
+                    Image(systemName: "books.vertical.fill")
+                    Text("Classes")
+                }
         }
     }
 }
