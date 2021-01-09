@@ -1,5 +1,5 @@
 //
-//  Classes.swift
+//  Tasks.swift
 //  SchoolHelper
 //
 //  Created by Pradyun Setti on 9/01/21.
@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct Classes: View {
-    
+struct Tasks: View {
     var body: some View {
-        Text("classes")
+        Text("tasks")
     }
 }
 
-struct Classes_Preview: PreviewProvider {
+struct Tasks_Previews: PreviewProvider {
     static var previews: some View {
-        Classes()
+        Tasks()
     }
 }

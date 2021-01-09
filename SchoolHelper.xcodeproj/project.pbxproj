@@ -17,6 +17,10 @@
 		46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F41E25A98A57008888E7 /* Dashboard.swift */; };
 		46F8F42425A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
 		46F8F42525A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
+		46F8F43125A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
+		46F8F43225A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
+		46F8F46325A9A951008888E7 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F46025A9A951008888E7 /* SchoolHelper.xcdatamodeld */; };
+		46F8F46425A9A951008888E7 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F46025A9A951008888E7 /* SchoolHelper.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,9 @@
 		46F8F40D25A98A01008888E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		46F8F41E25A98A57008888E7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		46F8F42325A98A86008888E7 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		46F8F43025A9A602008888E7 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		46F8F46125A9A951008888E7 /* SchoolHelper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolHelper.xcdatamodel; sourceTree = "<group>"; };
+		46F8F46225A9A951008888E7 /* TaskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +72,8 @@
 			children = (
 				46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */,
 				46F8F3FC25A989FF008888E7 /* ContentView.swift */,
+				46F8F43025A9A602008888E7 /* Tasks.swift */,
+				46F8F46025A9A951008888E7 /* SchoolHelper.xcdatamodeld */,
 				46F8F41E25A98A57008888E7 /* Dashboard.swift */,
 				46F8F42325A98A86008888E7 /* Classes.swift */,
 				46F8F3FD25A98A01008888E7 /* Assets.xcassets */,
@@ -198,7 +207,9 @@
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
 				46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42425A98A86008888E7 /* Classes.swift in Sources */,
+				46F8F43125A9A602008888E7 /* Tasks.swift in Sources */,
 				46F8F40E25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
+				46F8F46325A9A951008888E7 /* SchoolHelper.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +220,9 @@
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
 				46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42525A98A86008888E7 /* Classes.swift in Sources */,
+				46F8F43225A9A602008888E7 /* Tasks.swift in Sources */,
 				46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
+				46F8F46425A9A951008888E7 /* SchoolHelper.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +458,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46F8F46025A9A951008888E7 /* SchoolHelper.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46F8F46125A9A951008888E7 /* SchoolHelper.xcdatamodel */,
+				46F8F46225A9A951008888E7 /* TaskModel.xcdatamodel */,
+			);
+			currentVersion = 46F8F46125A9A951008888E7 /* SchoolHelper.xcdatamodel */;
+			path = SchoolHelper.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 46F8F3F625A989FF008888E7 /* Project object */;
 }

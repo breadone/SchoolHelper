@@ -20,6 +20,11 @@ struct ContentView: View {
                     Image(systemName: "books.vertical.fill")
                     Text("Classes")
                 }
+            Tasks()
+                .tabItem {
+                    Image(systemName: "checkmark.square.fill")
+                    Text("Tasks")
+                }
         }
     }
 }
