@@ -12,22 +12,22 @@ struct Tasks: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: TaskItem.entity(), sortDescriptors: []) var tasks: FetchedResults<TaskItem>
     
+    @State private var showingAddScreen = false
+    
+    
     var body: some View {
-        VStack {
-            List {
-                ForEach(tasks) { tasks in
-                    Text(tasks.name ?? "unknown")
+        NavigationView {
+            Text("Count: \(tasks.count)")
+                .navigationBarTitle("Tasks")
+                .navigationBarItems(trailing:
+                    Button(action: {self.showingAddScreen.toggle()},
+                           label: {
+                            Image(systemName: "plus")
+                           })
+                )
+                .sheet(isPresented: $showingAddScreen) {
+                    AddTaskView().environment(\.managedObjectContext, self.moc)
                 }
-            }
-            Button("Add") {
-//                let taskname = ["compsci hw", "physics hw", "bio hw", "math hw"]
-                let chosenName = "taskname.randomElement()!"
-                
-                let task = TaskItem(context: self.moc)
-                task.name = "\(chosenName)"
-                
-                try? self.moc.save()
-            }
         }
     }
 }
@@ -37,3 +37,7 @@ struct Tasks_Previews: PreviewProvider {
         Tasks()
     }
 }
+
+//public func AddItem(_ name: String, dueDate: Int) {
+//
+//}
