@@ -71,6 +71,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46706A7125AABC860049A70A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				466B433825AAB227008A24B0 /* Persistence.swift */,
+				460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */,
+				466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */,
+				466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		46F8F3F525A989FF008888E7 = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +102,7 @@
 				46F8F43025A9A602008888E7 /* Tasks.swift */,
 				460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */,
 				460C597525AA5E380077AF87 /* Me.swift */,
-				460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */,
-				466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */,
-				466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */,
-				466B433825AAB227008A24B0 /* Persistence.swift */,
+				46706A7125AABC860049A70A /* Data */,
 				46F8F3FD25A98A01008888E7 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -497,8 +505,7 @@
 				460C59A125AA7F940077AF87 /* SchoolHelper.xcdatamodel */,
 			);
 			currentVersion = 460C59A125AA7F940077AF87 /* SchoolHelper.xcdatamodel */;
-			name = SchoolHelper.xcdatamodeld;
-			path = ../SchoolHelper.xcdatamodeld;
+			path = SchoolHelper.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

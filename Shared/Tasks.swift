@@ -14,10 +14,16 @@ struct Tasks: View {
     
     @State private var showingAddScreen = false
     
-    
     var body: some View {
         NavigationView {
-            Text("Count: \(tasks.count)")
+            List {
+                ForEach(tasks, id: \.self) { task in
+                    NavigationLink(
+                        destination: Text(task.desc ?? "no title")) {
+                        Text(task.name ?? "no description")
+                    }
+                }
+            }
                 .navigationBarTitle("Tasks")
                 .navigationBarItems(trailing:
                     Button(action: {self.showingAddScreen.toggle()},
