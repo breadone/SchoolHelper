@@ -10,9 +10,11 @@
 		460C597625AA5E380077AF87 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C597525AA5E380077AF87 /* Me.swift */; };
 		460C597725AA5E380077AF87 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C597525AA5E380077AF87 /* Me.swift */; };
 		460C59A225AA7F940077AF87 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */; };
-		460C59AE25AA81220077AF87 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59AD25AA81220077AF87 /* Persistence.swift */; };
-		460C59AF25AA81220077AF87 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59AD25AA81220077AF87 /* Persistence.swift */; };
 		460C59B225AA812B0077AF87 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */; };
+		460C59BB25AA896D0077AF87 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59B925AA896D0077AF87 /* TaskItem+CoreDataClass.swift */; };
+		460C59BC25AA896D0077AF87 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59B925AA896D0077AF87 /* TaskItem+CoreDataClass.swift */; };
+		460C59BD25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59BA25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift */; };
+		460C59BE25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59BA25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift */; };
 		46F8F40E25A98A01008888E7 /* SchoolHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */; };
 		46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */; };
 		46F8F41025A98A01008888E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F3FC25A989FF008888E7 /* ContentView.swift */; };
@@ -25,14 +27,13 @@
 		46F8F42525A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
 		46F8F43125A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
 		46F8F43225A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
-		46F8F46825A9AABD008888E7 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F46725A9AABD008888E7 /* TaskItem.swift */; };
-		46F8F46925A9AABD008888E7 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F46725A9AABD008888E7 /* TaskItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		460C597525AA5E380077AF87 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		460C59A125AA7F940077AF87 /* SchoolHelper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolHelper.xcdatamodel; sourceTree = "<group>"; };
-		460C59AD25AA81220077AF87 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		460C59B925AA896D0077AF87 /* TaskItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		460C59BA25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolHelperApp.swift; sourceTree = "<group>"; };
 		46F8F3FC25A989FF008888E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46F8F3FD25A98A01008888E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		46F8F41E25A98A57008888E7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		46F8F42325A98A86008888E7 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		46F8F43025A9A602008888E7 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
-		46F8F46725A9AABD008888E7 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +80,13 @@
 			isa = PBXGroup;
 			children = (
 				46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */,
-				460C59AD25AA81220077AF87 /* Persistence.swift */,
 				46F8F3FC25A989FF008888E7 /* ContentView.swift */,
 				46F8F41E25A98A57008888E7 /* Dashboard.swift */,
 				46F8F42325A98A86008888E7 /* Classes.swift */,
 				46F8F43025A9A602008888E7 /* Tasks.swift */,
 				460C597525AA5E380077AF87 /* Me.swift */,
-				46F8F46725A9AABD008888E7 /* TaskItem.swift */,
+				460C59BA25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift */,
+				460C59B925AA896D0077AF87 /* TaskItem+CoreDataClass.swift */,
 				46F8F3FD25A98A01008888E7 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -215,15 +215,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460C59AE25AA81220077AF87 /* Persistence.swift in Sources */,
+				460C59BD25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift in Sources */,
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
 				460C59A225AA7F940077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
 				46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42425A98A86008888E7 /* Classes.swift in Sources */,
+				460C59BB25AA896D0077AF87 /* TaskItem+CoreDataClass.swift in Sources */,
 				46F8F43125A9A602008888E7 /* Tasks.swift in Sources */,
 				46F8F40E25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 				460C597625AA5E380077AF87 /* Me.swift in Sources */,
-				46F8F46825A9AABD008888E7 /* TaskItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,14 +232,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
-				460C59AF25AA81220077AF87 /* Persistence.swift in Sources */,
+				460C59BE25AA896D0077AF87 /* TaskItem+CoreDataProperties.swift in Sources */,
 				46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42525A98A86008888E7 /* Classes.swift in Sources */,
 				46F8F43225A9A602008888E7 /* Tasks.swift in Sources */,
+				460C59BC25AA896D0077AF87 /* TaskItem+CoreDataClass.swift in Sources */,
 				460C59B225AA812B0077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
 				46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 				460C597725AA5E380077AF87 /* Me.swift in Sources */,
-				46F8F46925A9AABD008888E7 /* TaskItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
