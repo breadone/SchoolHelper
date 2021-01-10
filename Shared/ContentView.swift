@@ -25,6 +25,11 @@ struct ContentView: View {
                     Image(systemName: "checkmark.square.fill")
                     Text("Tasks")
                 }
+            Me()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Me")
+                }
         }
     }
 }
