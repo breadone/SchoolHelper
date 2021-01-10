@@ -20,11 +20,7 @@ struct Tasks: View {
             List {
                 ForEach(tasks, id: \.self) { task in                    
                     HStack {
-                        Text("08/10")
-//                        NavigationLink(
-//                            destination: Text(task.desc ?? "[no description]")) {
-//                            Text(task.name ?? "no title")
-//                        }
+                        Text(DateToString(task.dueDate!))
                         NavigationLink(destination: DetailedTaskView(
                                         taskName: task.name ?? "",
                                         taskDesc: task.desc ?? "")) {
@@ -40,7 +36,7 @@ struct Tasks: View {
                            label: {Image(systemName: "plus")})
                 )
                 .sheet(isPresented: $showingAddScreen) {
-                    AddTaskView()//.environment(\.managedObjectContext, self.moc)
+                    AddTaskView() //.environment(\.managedObjectContext, self.moc)
                 }
         }
     }
@@ -57,14 +53,13 @@ struct Tasks: View {
         }
     }
     
+    private func DateToString(_ date: Date) -> String {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "dd/MM"
+        return(formatter1.string(from: date))
+    }
+    
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct Tasks_Previews: PreviewProvider {
     static var previews: some View {

@@ -22,25 +22,25 @@ struct AddTaskView: View {
             Form {
                 Section {
                     TextField("Task", text: $name)
-                    TextField("Write a Description", text: $moreInfo)
                 }
-                
+                Section {
+                    TextField("Description", text: $moreInfo)
+                        .padding(.top, -90)
+                        .frame(height: 200)
+                        
+                }
                 Section {
                     DatePicker("Due Date", selection: $dueDate)
-                }
-
-                Section {
-                    Button("Save Task") {
-                        AddTask()
-                        DismissSheet()
-                    }
                 }
             }
             .navigationBarTitle("Add New Task")
             .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
                 Text("Cancel")
                     .foregroundColor(Color.red)
+            }), trailing: Button(action: {AddTask()}, label: {
+                Text("Done")
             }))
+
         }
     }
     
@@ -52,6 +52,7 @@ struct AddTaskView: View {
         newTask.dueDate = self.dueDate
         
         try? self.moc.save()
+        DismissSheet()
     }
     
     func DismissSheet() {

@@ -79,7 +79,7 @@
 			children = (
 				466B433825AAB227008A24B0 /* Persistence.swift */,
 				460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */,
-				46DD403025ABAAB400E6240D /* Tasks */,
+				46DD403025ABAAB400E6240D /* TaskItem */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -94,13 +94,13 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		46DD403025ABAAB400E6240D /* Tasks */ = {
+		46DD403025ABAAB400E6240D /* TaskItem */ = {
 			isa = PBXGroup;
 			children = (
 				466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */,
 				466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */,
 			);
-			path = Tasks;
+			path = TaskItem;
 			sourceTree = "<group>";
 		};
 		46F8F3F525A989FF008888E7 = {
