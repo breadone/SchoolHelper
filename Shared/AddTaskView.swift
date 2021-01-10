@@ -29,6 +29,7 @@ struct AddTaskView: View {
                         let newTask = TaskItem(context: self.moc)
                         newTask.name = self.name
                         newTask.dateCreated = Date()
+                        newTask.desc = self.moreInfo
                         
                         try? self.moc.save()
                         self.presentationMode.wrappedValue.dismiss()

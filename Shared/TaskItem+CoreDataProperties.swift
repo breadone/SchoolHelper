@@ -17,7 +17,7 @@ extension TaskItem {
     }
 
     @NSManaged public var dateCreated: Date?
-    @NSManaged public var dateDue: Date?
+    @NSManaged public var desc: String?
     @NSManaged public var name: String?
 
 }
