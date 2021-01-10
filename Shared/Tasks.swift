@@ -4,7 +4,7 @@
 //
 //  Created by Pradyun Setti on 9/01/21.
 //
-
+import Foundation
 import SwiftUI
 import CoreData
 
@@ -18,9 +18,13 @@ struct Tasks: View {
         NavigationView {
             List {
                 ForEach(tasks, id: \.self) { task in
-                    NavigationLink(
-                        destination: Text(task.desc ?? "no title")) {
-                        Text(task.name ?? "no description")
+                    HStack {
+                        Text("dueDate")
+                        
+                        NavigationLink(
+                            destination: Text(task.desc ?? "no title")) {
+                            Text(task.name ?? "no description")
+                        }
                     }
                 }
             }
@@ -44,6 +48,3 @@ struct Tasks_Previews: PreviewProvider {
     }
 }
 
-//public func AddItem(_ name: String, dueDate: Int) {
-//
-//}

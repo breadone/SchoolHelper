@@ -8,10 +8,11 @@
     <entity name="TaskItem" representedClassName=".TaskItem" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Subject" positionX="-1800.9140625" positionY="-1242.87109375" width="128" height="74"/>
-        <element name="TaskItem" positionX="-1461.9765625" positionY="-1210.47265625" width="128" height="74"/>
+        <element name="TaskItem" positionX="-1461.9765625" positionY="-1210.47265625" width="128" height="89"/>
     </elements>
 </model>
