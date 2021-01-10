@@ -20,14 +20,19 @@ struct Tasks: View {
             List {
                 ForEach(tasks, id: \.self) { task in                    
                     HStack {
-//                        Text(noDueDate ? "" : DateToString(task.dueDate!))
-                       Text("08/10")
-                        NavigationLink(
-                            destination: Text(task.desc ?? "no title")) {
-                            Text(task.name ?? "no description")
+                        Text("08/10")
+//                        NavigationLink(
+//                            destination: Text(task.desc ?? "[no description]")) {
+//                            Text(task.name ?? "no title")
+//                        }
+                        NavigationLink(destination: DetailedTaskView(
+                                        taskName: task.name ?? "",
+                                        taskDesc: task.desc ?? "")) {
+                            Text(task.name!)
                         }
                     }
                 }
+                .onDelete(perform: deleteItem)
             }
                 .navigationBarTitle("Tasks")
                 .navigationBarItems(trailing:
@@ -35,20 +40,31 @@ struct Tasks: View {
                            label: {Image(systemName: "plus")})
                 )
                 .sheet(isPresented: $showingAddScreen) {
-                    AddTaskView().environment(\.managedObjectContext, self.moc)
+                    AddTaskView()//.environment(\.managedObjectContext, self.moc)
                 }
         }
     }
     
-    func DateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM"
-        
-        let dateString = dateFormatter.string(from: date)
-        return dateString
+    private func deleteItem(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { tasks[$0] }.forEach(moc.delete)
+            do {
+                try moc.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
     
 }
+
+private let itemFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .medium
+    return formatter
+}()
 
 struct Tasks_Previews: PreviewProvider {
     static var previews: some View {
