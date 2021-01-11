@@ -26,19 +26,23 @@ struct AddTaskView: View {
                     TextField("Task", text: $name)
                 }
                 Section {
-                    TextField("Description", text: $moreInfo)
-                        .font(.body)
-                        .lineLimit(15)
-                        .padding(.top, -90)
-                        .frame(height: 200)
+                    TextEditor(text: $moreInfo)
+//                        .font(.body)
+//                        .lineLimit(15)
+//                        .padding(.top, -90)
+//                        .frame(height: 200)
                 }
                 Section {
                     VStack {
                         Toggle(isOn: $hasDueDate, label: {
-                            Text("Due Date")
+                            HStack {
+                                Image(systemName: "deskclock.fill")
+                                    .renderingMode(.original)
+                                Text("Due Date")
+                            }
                         })
                         if self.hasDueDate {
-                            DatePicker("Due Date", selection: $dueDate)
+                            DatePicker("Date/Time:", selection: $dueDate)
                         }
                     }
                 }

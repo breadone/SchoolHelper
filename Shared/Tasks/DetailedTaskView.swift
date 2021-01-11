@@ -12,19 +12,13 @@ struct DetailedTaskView: View {
     let task: TaskItem
     
     var body: some View {
-        GeometryReader { geo in
-            VStack {
+        VStack(alignment: .leading) {
                 Text(self.task.desc ?? "no desc")
                     .font(.body)
-                    .lineLimit(nil)
-                    .frame(height: geo.size.height * 0.85, alignment: .topLeading)
-//                    .padding(.top, 15)
-//                    .padding(.leading, 15)
-                Spacer()
-            }
+                    .padding()
+            Spacer()
         }
-        .navigationBarTitle(task.name ?? "no title")
-        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarTitle(task.name ?? "no title", displayMode: .automatic)
         .navigationBarItems(trailing: Text("Due On: \(DateToString(task.dueDate!))"))
     }
     
@@ -40,7 +34,7 @@ struct DetailedTaskView_Previews: PreviewProvider {
     
     static var previews: some View {
         let eTask = TaskItem(context: moc)
-        eTask.name = "test task"
+        eTask.name = "test title"
         eTask.desc = """
             test description
             another line
