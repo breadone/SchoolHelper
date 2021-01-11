@@ -25,9 +25,10 @@ struct AddTaskView: View {
                 }
                 Section {
                     TextField("Description", text: $moreInfo)
+                        .font(.body)
+                        .lineLimit(15)
                         .padding(.top, -90)
                         .frame(height: 200)
-                        
                 }
                 Section {
                     DatePicker("Due Date", selection: $dueDate)

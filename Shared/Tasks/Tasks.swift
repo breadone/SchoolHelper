@@ -13,7 +13,6 @@ struct Tasks: View {
     @FetchRequest(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)]) var tasks: FetchedResults<TaskItem>
     
     @State private var showingAddScreen = false
-    @State private var noDueDate = false
 
     var body: some View {
         NavigationView {
@@ -21,9 +20,7 @@ struct Tasks: View {
                 ForEach(tasks, id: \.self) { task in                    
                     HStack {
                         Text(DateToString(task.dueDate!))
-                        NavigationLink(destination: DetailedTaskView(
-                                        taskName: task.name ?? "",
-                                        taskDesc: task.desc ?? "")) {
+                        NavigationLink(destination: DetailedTaskView(task: task)) {
                             Text(task.name!)
                         }
                     }
