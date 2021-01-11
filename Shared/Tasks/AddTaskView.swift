@@ -17,6 +17,8 @@ struct AddTaskView: View {
     @State private var moreInfo = ""
     @State private var dueDate = Date()
     
+    @State private var hasDueDate = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -31,7 +33,14 @@ struct AddTaskView: View {
                         .frame(height: 200)
                 }
                 Section {
-                    DatePicker("Due Date", selection: $dueDate)
+                    VStack {
+                        Toggle(isOn: $hasDueDate, label: {
+                            Text("Due Date")
+                        })
+                        if self.hasDueDate {
+                            DatePicker("Due Date", selection: $dueDate)
+                        }
+                    }
                 }
             }
             .navigationBarTitle("Add New Task")
