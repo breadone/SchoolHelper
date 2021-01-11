@@ -32,21 +32,14 @@ struct Tasks: View {
                     Button(action: {self.showingAddScreen.toggle()},
                            label: {Image(systemName: "plus")})
                 )
-                .sheet(isPresented: $showingAddScreen) {
-                    AddTaskView() //.environment(\.managedObjectContext, self.moc)
-                }
+            .sheet(isPresented: $showingAddScreen) { AddTaskView() } //.environment(\.managedObjectContext, self.moc)
         }
     }
     
     private func deleteItem(offsets: IndexSet) {
         withAnimation {
             offsets.map { tasks[$0] }.forEach(moc.delete)
-            do {
-                try moc.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            try? self.moc.save()
         }
     }
     
