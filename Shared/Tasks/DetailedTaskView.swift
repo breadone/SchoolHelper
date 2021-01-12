@@ -24,6 +24,7 @@ struct DetailedTaskView: View {
                     .sheet(isPresented: $EditMode, content: {
                         AddTaskView()
                 })
+                Spacer()
             }
             Spacer()
         }
