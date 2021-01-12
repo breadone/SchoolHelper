@@ -10,19 +10,26 @@ import CoreData
 
 struct DetailedTaskView: View {
     let task: TaskItem
+    @State var EditMode = false
     
     var body: some View {
         VStack(alignment: .leading) {
-                Text(self.task.desc ?? "no desc")
-                    .font(.body)
+            HStack {
+                Text(task.desc ?? "no description")
                     .padding()
+                    .navigationBarTitle(task.name ?? "no title", displayMode: .inline)
+                    .navigationBarItems(trailing: Button(action: {EditMode.toggle()}, label: {
+                        Text("Edit")
+                    }))
+                    .sheet(isPresented: $EditMode, content: {
+                        AddTaskView()
+                })
+            }
             Spacer()
         }
-        .navigationBarTitle(task.name ?? "no title", displayMode: .automatic)
-        .navigationBarItems(trailing: Text("Due On: \(DateToString(task.dueDate!))"))
     }
     
-    public func DateToString(_ date: Date) -> String {
+    private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "dd/MM"
         return(formatter1.string(from: date))
@@ -35,11 +42,7 @@ struct DetailedTaskView_Previews: PreviewProvider {
     static var previews: some View {
         let eTask = TaskItem(context: moc)
         eTask.name = "test title"
-        eTask.desc = """
-            test description
-            another line
-            and another one
-        """
+        eTask.desc = "test description"
         eTask.dueDate = Date()
         
         return NavigationView {

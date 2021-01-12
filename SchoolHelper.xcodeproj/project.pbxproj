@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460A66A625AD125200DB47E1 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A66A525AD125200DB47E1 /* EditTaskView.swift */; };
+		460A66A725AD125200DB47E1 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A66A525AD125200DB47E1 /* EditTaskView.swift */; };
 		460C597625AA5E380077AF87 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C597525AA5E380077AF87 /* Me.swift */; };
 		460C597725AA5E380077AF87 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C597525AA5E380077AF87 /* Me.swift */; };
 		460C59A225AA7F940077AF87 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */; };
@@ -36,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		460A66A525AD125200DB47E1 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		460C597525AA5E380077AF87 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		460C59A125AA7F940077AF87 /* SchoolHelper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolHelper.xcdatamodel; sourceTree = "<group>"; };
 		460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 				46F8F43025A9A602008888E7 /* Tasks.swift */,
 				460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */,
 				46DD402925ABA65000E6240D /* DetailedTaskView.swift */,
+				460A66A525AD125200DB47E1 /* EditTaskView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -252,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466B433925AAB227008A24B0 /* Persistence.swift in Sources */,
+				460A66A625AD125200DB47E1 /* EditTaskView.swift in Sources */,
 				460C59D025AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
 				46DD402A25ABA65000E6240D /* DetailedTaskView.swift in Sources */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466B433A25AAB227008A24B0 /* Persistence.swift in Sources */,
+				460A66A725AD125200DB47E1 /* EditTaskView.swift in Sources */,
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
 				460C59D125AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46DD402B25ABA65000E6240D /* DetailedTaskView.swift in Sources */,

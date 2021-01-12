@@ -1,24 +1,21 @@
 //
-//  AddTaskView.swift
+//  EditTaskView.swift
 //  SchoolHelper
 //
-//  Created by Pradyun Setti on 10/01/21.
+//  Created by Pradyun Setti on 12/01/21.
 //
 
 import SwiftUI
-import CoreData
 
-struct AddTaskView: View {
+struct EditTaskView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
     @State private var name = ""
-    @State private var dateCreated = Date()
-    @State private var moreInfo = "Description"
+    @State private var moreInfo = ""
     @State private var dueDate = Date()
-    
     @State private var hasDueDate = false
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -27,17 +24,12 @@ struct AddTaskView: View {
                 }
                 Section {
                     TextEditor(text: $moreInfo)
-                        .font(.body)
-                        .lineLimit(15)
-//                        .padding(.top, -90)
-                        .frame(height: 200)
                 }
                 Section {
                     VStack {
                         Toggle(isOn: $hasDueDate, label: {
                             HStack {
                                 Image(systemName: "deskclock.fill")
-                                    .renderingMode(.original)
                                 Text("Due Date")
                             }
                         })
@@ -47,7 +39,7 @@ struct AddTaskView: View {
                     }
                 }
             }
-            .navigationBarTitle("Add New Task")
+            .navigationBarTitle("Edit Task")
             .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
                 Text("Cancel")
                     .foregroundColor(Color.red)
@@ -74,10 +66,8 @@ struct AddTaskView: View {
     }
 }
 
-struct AddTaskView_Previews: PreviewProvider {
+struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView()
+        EditTaskView()
     }
 }
-
-
