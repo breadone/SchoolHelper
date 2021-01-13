@@ -13,22 +13,36 @@ struct DetailedTaskView: View {
     @State var EditMode = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(task.desc ?? "no description")
-                    .padding()
-                    .navigationBarTitle(task.name ?? "no title", displayMode: .inline)
-                    .navigationBarItems(trailing: Button(action: {EditMode.toggle()}, label: {
-                        Text("Edit")
-                    }))
-                    .sheet(isPresented: $EditMode, content: {
-                        AddTaskView()
-                })
-                Spacer()
+        VStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(task.desc ?? "no description")
+                        .padding()
+                        .navigationBarTitle(task.name ?? "no title", displayMode: .automatic)
+                        .navigationBarItems(trailing: Button(action: {EditMode.toggle()}, label: {
+                            Text("Edit")
+                        }))
+                        .sheet(isPresented: $EditMode, content: {
+                            EditTaskView()
+                    })
+                    Spacer()
+                }
+
             }
             Spacer()
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("Completed")
+                        .foregroundColor(.white)
+            })
+                .frame(width: 200, height: 50, alignment: .center)
+                .background(Color.green)
+                .cornerRadius(10)
+                .padding()
+            
         }
     }
+    
+//    Tasks.deleteItem()
     
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
