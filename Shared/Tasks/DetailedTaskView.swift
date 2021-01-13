@@ -47,7 +47,7 @@ struct DetailedTaskView: View {
         
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
-        formatter1.dateFormat = "dd/MM"
+        formatter1.dateFormat = "dd/MM, hh:ss"
         return(formatter1.string(from: date))
     }
     

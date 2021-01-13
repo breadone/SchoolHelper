@@ -22,7 +22,6 @@ struct Tasks: View {
                             TaskListView(displayedTask: task)
                     }
                 }
-                .onDelete(perform: deleteItem)
             }
                 .navigationBarTitle("Tasks")
                 .navigationBarItems(trailing:
@@ -33,12 +32,6 @@ struct Tasks: View {
         }
     }
     
-    private func deleteItem(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { tasks[$0] }.forEach(moc.delete)
-            try? self.moc.save()
-        }
-    }
 }
 
 struct TaskListView: View {
@@ -52,22 +45,33 @@ struct TaskListView: View {
                     .renderingMode(.original)
                     .resizable()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.white)
             })
-            .padding(.leading, 15)
+            .padding(.leading, 25)
             VStack(alignment: .leading){
                 Text(displayedTask.name ?? "no title")
-                    .font(.largeTitle)
+//                    .font(.title)
+                    .font(.system(size: 18, weight: .heavy, design: .default))
                     .foregroundColor(.white)
+                    .lineLimit(1)
                 Text(displayedTask.desc ?? "")
+                    .font(.body)
                     .lineLimit(2)
                     .foregroundColor(.white)
             }
             .frame(width: 140, height: 80)
-            .padding()
+            .padding(.leading, 15)
 //            Spacer()
             VStack(alignment: .center) {
-                Text("Due At:").foregroundColor(.white)
+                Text("Created:")
+                    .foregroundColor(.white)
+                    .font(.caption)
+                Text(DateToString(displayedTask.dateCreated!))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 1)
+                Text("Due At:")
+                    .foregroundColor(.white)
+                    .font(.caption)
                 Text(DateToString(displayedTask.dueDate!)).foregroundColor(.white)
             }
             .padding()
@@ -97,6 +101,7 @@ struct Tasks_Previews: PreviewProvider {
         eTask.name = "test title"
         eTask.desc = "test description"
         eTask.dueDate = Date()
+        eTask.dateCreated = Date()
         
         return NavigationView {
             TaskListView(displayedTask: eTask)
