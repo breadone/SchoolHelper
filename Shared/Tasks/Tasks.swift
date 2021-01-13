@@ -103,7 +103,8 @@ struct Tasks_Previews: PreviewProvider {
         eTask.dateCreated = Date()
         
         return NavigationView {
-            TaskListView(displayedTask: eTask)
+//            TaskListView(displayedTask: eTask)
+            Tasks()
         }
 //        .preferredColorScheme(.dark)
     }

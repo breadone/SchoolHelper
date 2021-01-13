@@ -14,14 +14,12 @@ struct DetailedTaskView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var EditMode = false
-    @State var TaskDone = false
     
     var body: some View {
         VStack(alignment: .center) {
-            VStack(alignment: .leading) {
-                HStack {
                     Text(task.desc ?? "no description")
                         .padding()
+                        .frame(width: 370, height: 550, alignment: .topLeading)
                         .navigationBarTitle(task.name ?? "no title", displayMode: .automatic)
                         .navigationBarItems(trailing: Button(action: {EditMode.toggle()}, label: {
                             Text("Edit")
@@ -29,15 +27,10 @@ struct DetailedTaskView: View {
                         .sheet(isPresented: $EditMode, content: {
                             EditTaskView(task: task)
                     })
-                    Spacer()
-                }
-
-            }
             Spacer()
-            Button(action: {DoneTask(task: task)}, label: {
+            Button(action: {DoneTask(task)}, label: {
                     Text("Completed")
-                        .foregroundColor(.white)
-            })
+                        .foregroundColor(.white) })
                 .frame(width: 280, height: 50, alignment: .center)
                 .background(Color.green)
                 .cornerRadius(17)
@@ -51,7 +44,7 @@ struct DetailedTaskView: View {
         return(formatter1.string(from: date))
     }
     
-    func DoneTask(task: TaskItem) {
+    func DoneTask(_ task: TaskItem) {
         task.isActive = false
         try? moc.save()
         self.presentationMode.wrappedValue.dismiss()
@@ -65,7 +58,7 @@ struct DetailedTaskView_Previews: PreviewProvider {
     static var previews: some View {
         let eTask = TaskItem(context: moc)
         eTask.name = "test title"
-        eTask.desc = "test description"
+        eTask.desc = "test description asldkfjalsdkjflaskdjflsakjdfhlaskdjfhlaksjdfhlksajdhflksajdfhlaksjdfhlkasjdhflj"
         eTask.dueDate = Date()
         
         return NavigationView {
