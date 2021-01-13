@@ -12,22 +12,22 @@ struct ContentView: View {
         TabView {
             Dashboard()
                 .tabItem {
-                    Image(systemName: "text.book.closed.fill")
+                    Image(systemName: "text.book.closed")
                     Text("Dashboard")
                 }
             Classes()
                 .tabItem {
-                    Image(systemName: "books.vertical.fill")
-                    Text("Classes")
+                    Image(systemName: "calendar")
+                    Text("Timetable")
                 }
             Tasks()
                 .tabItem {
-                    Image(systemName: "checkmark.square.fill")
+                    Image(systemName: "checkmark.square")
                     Text("Tasks")
                 }
             Me()
                 .tabItem {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "person")
                     Text("Me")
                 }
         }

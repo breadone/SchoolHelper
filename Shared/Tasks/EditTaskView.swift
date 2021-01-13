@@ -6,35 +6,41 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EditTaskView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var name = ""
-    @State private var moreInfo = ""
-    @State private var dueDate = Date()
+    let task: TaskItem
+    
+    @State private var Newname = ""
+    @State private var NewmoreInfo = ""
+    @State private var NewdueDate = Date()
     @State private var hasDueDate = false
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Task", text: $name)
+                    TextField(task.name ?? "no title", text: $Newname)
                 }
                 Section {
-                    TextEditor(text: $moreInfo)
+                    TextEditor(text: $NewmoreInfo)
+                        .font(.body)
+                        .lineLimit(15)
+                        .frame(height: 200)
                 }
                 Section {
                     VStack {
                         Toggle(isOn: $hasDueDate, label: {
                             HStack {
-                                Image(systemName: "deskclock.fill")
+                                Image(systemName: "deskclock")
                                 Text("Due Date")
                             }
                         })
                         if self.hasDueDate {
-                            DatePicker("Date/Time:", selection: $dueDate)
+                            DatePicker("Date/Time:", selection: $NewdueDate)
                         }
                     }
                 }
@@ -43,19 +49,19 @@ struct EditTaskView: View {
             .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
                 Text("Cancel")
                     .foregroundColor(Color.red)
-            }), trailing: Button(action: {AddTask()}, label: {
+            }), trailing: Button(action: {EditTask()}, label: {
                 Text("Done")
             }))
 
         }
     }
     
-    func AddTask() {
+    func EditTask() {
         let newTask = TaskItem(context: self.moc)
-        newTask.name = self.name
+        newTask.name = self.Newname
         newTask.dateCreated = Date()
-        newTask.desc = self.moreInfo
-        newTask.dueDate = self.dueDate
+        newTask.desc = self.NewmoreInfo
+        newTask.dueDate = self.NewdueDate
         
         try? self.moc.save()
         DismissSheet()
@@ -66,8 +72,18 @@ struct EditTaskView: View {
     }
 }
 
-struct EditTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditTaskView()
-    }
-}
+//struct EditTaskView_Previews: PreviewProvider {
+//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//        let eTask = TaskItem(context: moc)
+//        eTask.name = "test title"
+//        eTask.desc = "test description"
+//        eTask.dueDate = Date()
+//
+//        return NavigationView {
+//            EditTaskView(task: eTask)
+//        }
+//
+//    }
+//}

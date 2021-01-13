@@ -14,7 +14,7 @@ struct AddTaskView: View {
     
     @State private var name = ""
     @State private var dateCreated = Date()
-    @State private var moreInfo = "Description"
+    @State private var moreInfo = ""
     @State private var dueDate = Date()
     
     @State private var hasDueDate = false
@@ -23,21 +23,19 @@ struct AddTaskView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Task", text: $name)
+                    TextField("", text: $name)
                 }
                 Section {
                     TextEditor(text: $moreInfo)
                         .font(.body)
                         .lineLimit(15)
-//                        .padding(.top, -90)
                         .frame(height: 200)
                 }
                 Section {
                     VStack {
                         Toggle(isOn: $hasDueDate, label: {
                             HStack {
-                                Image(systemName: "deskclock.fill")
-                                    .renderingMode(.original)
+                                Image(systemName: "deskclock")
                                 Text("Due Date")
                             }
                         })

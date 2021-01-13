@@ -10,6 +10,8 @@ import CoreData
 
 struct DetailedTaskView: View {
     let task: TaskItem
+    @Environment(\.managedObjectContext) var moc
+    
     @State var EditMode = false
     
     var body: some View {
@@ -23,33 +25,36 @@ struct DetailedTaskView: View {
                             Text("Edit")
                         }))
                         .sheet(isPresented: $EditMode, content: {
-                            EditTaskView()
+                            EditTaskView(task: task)
                     })
                     Spacer()
                 }
 
             }
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {deleteItem}, label: {
                     Text("Completed")
                         .foregroundColor(.white)
             })
                 .frame(width: 200, height: 50, alignment: .center)
                 .background(Color.green)
-                .cornerRadius(10)
+            .cornerRadius(17)
                 .padding()
-            
         }
     }
-    
-//    Tasks.deleteItem()
-    
+        
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "dd/MM"
         return(formatter1.string(from: date))
     }
+    
+    func deleteItem(offsets: IndexSet) {
+        offsets.map { _ in task }.forEach(moc.delete)
+        try? moc.save()
+    }
 }
+
 
 struct DetailedTaskView_Previews: PreviewProvider {
     static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
