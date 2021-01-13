@@ -52,7 +52,7 @@ struct DetailedTaskView: View {
     }
     
     func DoneTask(task: TaskItem) {
-        moc.delete(task)
+        task.isActive = false
         try? moc.save()
         self.presentationMode.wrappedValue.dismiss()
     }
@@ -71,6 +71,5 @@ struct DetailedTaskView_Previews: PreviewProvider {
         return NavigationView {
             DetailedTaskView(task: eTask)
         }
-        .preferredColorScheme(.dark)
     }
 }

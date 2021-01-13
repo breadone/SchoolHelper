@@ -15,10 +15,11 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         
         for _ in 0..<10 {
-            let newItem = TaskItem(context: viewContext)
-            newItem.dateCreated = Date()
-            newItem.desc = "no description"
-            newItem.name = "name"
+            let newTaskItem = TaskItem(context: viewContext)
+            newTaskItem.dateCreated = Date()
+            newTaskItem.desc = "no description"
+            newTaskItem.name = "name"
+            newTaskItem.isActive = true
         }
         do {
             try viewContext.save()

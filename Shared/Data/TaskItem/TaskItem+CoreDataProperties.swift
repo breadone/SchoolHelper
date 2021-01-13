@@ -20,6 +20,7 @@ extension TaskItem {
     @NSManaged public var desc: String?
     @NSManaged public var name: String?
     @NSManaged public var dueDate: Date?
+    @NSManaged public var isActive: Bool
 
 }
 
