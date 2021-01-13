@@ -72,6 +72,7 @@ struct AddTaskView: View {
         newTask.dateCreated = Date()
         newTask.desc = self.moreInfo
         newTask.dueDate = self.dueDate
+        newTask.isActive = true
         
         try? self.moc.save()
         DismissSheet()

@@ -10,9 +10,18 @@ import CoreData
 
 struct Tasks: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)]) var tasks: FetchedResults<TaskItem>
+//    @FetchRequest(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)]) var tasks: FetchedResults<TaskItem>
+    
+    //BEGIN new stuff
+    var fetchRequest: FetchRequest<TaskItem>
+    init() {
+        fetchRequest = FetchRequest<TaskItem>(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)], predicate: NSPredicate(format: "isActive == true"))
+    }
+    var tasks: FetchedResults<TaskItem> {fetchRequest.wrappedValue}
+    //END new stuff
     
     @State private var showingAddScreen = false
+    @State private var activeFilter = true
 
     var body: some View {
         NavigationView {
@@ -28,7 +37,7 @@ struct Tasks: View {
                     Button(action: {self.showingAddScreen.toggle()},
                            label: {Image(systemName: "plus")})
                 )
-            .sheet(isPresented: $showingAddScreen) { AddTaskView() } //.environment(\.managedObjectContext, self.moc)
+            .sheet(isPresented: $showingAddScreen) { AddTaskView() }
         }
     }
     
@@ -60,7 +69,6 @@ struct TaskListView: View {
             }
             .frame(width: 150, height: 80, alignment: .leading)
             .padding(.leading, 15)
-//            Spacer()
             VStack(alignment: .center) {
                 Text("Created:")
                     .foregroundColor(.white)
