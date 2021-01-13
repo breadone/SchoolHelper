@@ -31,21 +31,18 @@ struct EditTaskView: View {
                         .lineLimit(15)
                         .frame(height: 200)
                 }
-                Section {
-                    VStack {
-                        Toggle(isOn: $hasDueDate, label: {
-                            HStack {
-                                Image(systemName: "deskclock")
-                                Text("Due Date")
-                            }
-                        })
-                        if self.hasDueDate {
-                            DatePicker("Date/Time:", selection: $NewdueDate)
-                                .datePickerStyle(GraphicalDatePickerStyle())
-                                .labelsHidden()
-                        }
-                    }
-                }
+//                Section {
+//                    VStack {
+//                        Toggle(isOn: $hasDueDate, label: {
+//                            Label("Due Date", systemImage: "deskclock")
+//                        })
+//                        if self.hasDueDate {
+//                            DatePicker("Date/Time:", selection: $NewdueDate)
+//                                .datePickerStyle(GraphicalDatePickerStyle())
+//                                .labelsHidden()
+//                        }
+//                    }
+//                }
             }
             .navigationBarTitle("Edit Task")
             .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
@@ -58,9 +55,14 @@ struct EditTaskView: View {
     }
     
     func EditTask(editedTask: TaskItem) {
-        editedTask.name = self.Newname
-        editedTask.desc = self.NewmoreInfo
-        editedTask.dueDate = self.NewdueDate
+        if Newname != "" {
+            editedTask.name = self.Newname
+        }
+        if NewmoreInfo != "" {
+            editedTask.desc = self.NewmoreInfo
+
+        }
+//        editedTask.dueDate = self.NewdueDate
         
         try? self.moc.save()
         DismissSheet()
