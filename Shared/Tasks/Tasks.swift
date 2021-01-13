@@ -43,6 +43,7 @@ struct Tasks: View {
         }
     }
     
+    
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "dd/MM"

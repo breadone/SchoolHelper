@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct Classes: View {
-    
+struct Timetable: View {
     
     var body: some View {
-        Text("classes")
+        Text("timetable")
     }
 }
 
-struct Classes_Preview: PreviewProvider {
+struct Timetable_Previews: PreviewProvider {
     static var previews: some View {
-        Classes()
+        Timetable()
     }
 }

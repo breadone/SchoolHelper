@@ -41,6 +41,8 @@ struct EditTaskView: View {
                         })
                         if self.hasDueDate {
                             DatePicker("Date/Time:", selection: $NewdueDate)
+                                .datePickerStyle(GraphicalDatePickerStyle())
+                                .labelsHidden()
                         }
                     }
                 }
@@ -49,19 +51,16 @@ struct EditTaskView: View {
             .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
                 Text("Cancel")
                     .foregroundColor(Color.red)
-            }), trailing: Button(action: {EditTask()}, label: {
+            }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
                 Text("Done")
             }))
-
         }
     }
     
-    func EditTask() {
-        let newTask = TaskItem(context: self.moc)
-        newTask.name = self.Newname
-        newTask.dateCreated = Date()
-        newTask.desc = self.NewmoreInfo
-        newTask.dueDate = self.NewdueDate
+    func EditTask(editedTask: TaskItem) {
+        editedTask.name = self.Newname
+        editedTask.desc = self.NewmoreInfo
+        editedTask.dueDate = self.NewdueDate
         
         try? self.moc.save()
         DismissSheet()
@@ -72,18 +71,19 @@ struct EditTaskView: View {
     }
 }
 
-//struct EditTaskView_Previews: PreviewProvider {
-//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-//
-//    static var previews: some View {
-//        let eTask = TaskItem(context: moc)
-//        eTask.name = "test title"
-//        eTask.desc = "test description"
-//        eTask.dueDate = Date()
-//
-//        return NavigationView {
-//            EditTaskView(task: eTask)
-//        }
-//
-//    }
-//}
+struct EditTaskView_Previews: PreviewProvider {
+    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+
+    static var previews: some View {
+        let eTask = TaskItem(context: moc)
+        eTask.name = "test title"
+        eTask.desc = "test description"
+        eTask.dueDate = Date()
+
+        return NavigationView {
+            EditTaskView(task: eTask)
+                
+        }
+
+    }
+}

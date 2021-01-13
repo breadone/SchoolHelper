@@ -31,8 +31,8 @@
 		46F8F41325A98A01008888E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F8F3FD25A98A01008888E7 /* Assets.xcassets */; };
 		46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F41E25A98A57008888E7 /* Dashboard.swift */; };
 		46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F41E25A98A57008888E7 /* Dashboard.swift */; };
-		46F8F42425A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
-		46F8F42525A98A86008888E7 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Classes.swift */; };
+		46F8F42425A98A86008888E7 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Timetable.swift */; };
+		46F8F42525A98A86008888E7 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F42325A98A86008888E7 /* Timetable.swift */; };
 		46F8F43125A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
 		46F8F43225A9A602008888E7 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8F43025A9A602008888E7 /* Tasks.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		46F8F40C25A98A01008888E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F8F40D25A98A01008888E7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		46F8F41E25A98A57008888E7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
-		46F8F42325A98A86008888E7 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		46F8F42325A98A86008888E7 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 		46F8F43025A9A602008888E7 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,7 +123,7 @@
 				46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */,
 				46F8F3FC25A989FF008888E7 /* ContentView.swift */,
 				46F8F41E25A98A57008888E7 /* Dashboard.swift */,
-				46F8F42325A98A86008888E7 /* Classes.swift */,
+				46F8F42325A98A86008888E7 /* Timetable.swift */,
 				46DD402825ABA63200E6240D /* Tasks */,
 				460C597525AA5E380077AF87 /* Me.swift */,
 				46706A7125AABC860049A70A /* Data */,
@@ -263,7 +263,7 @@
 				466B433025AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */,
 				460C59A225AA7F940077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
 				46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */,
-				46F8F42425A98A86008888E7 /* Classes.swift in Sources */,
+				46F8F42425A98A86008888E7 /* Timetable.swift in Sources */,
 				46F8F43125A9A602008888E7 /* Tasks.swift in Sources */,
 				46F8F40E25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 				460C597625AA5E380077AF87 /* Me.swift in Sources */,
@@ -282,7 +282,7 @@
 				46DD402B25ABA65000E6240D /* DetailedTaskView.swift in Sources */,
 				466B433125AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */,
 				46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */,
-				46F8F42525A98A86008888E7 /* Classes.swift in Sources */,
+				46F8F42525A98A86008888E7 /* Timetable.swift in Sources */,
 				46F8F43225A9A602008888E7 /* Tasks.swift in Sources */,
 				460C59B225AA812B0077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
 				46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,

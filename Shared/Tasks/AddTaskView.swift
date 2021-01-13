@@ -34,13 +34,12 @@ struct AddTaskView: View {
                 Section {
                     VStack {
                         Toggle(isOn: $hasDueDate, label: {
-                            HStack {
-                                Image(systemName: "deskclock")
-                                Text("Due Date")
-                            }
+                            Label("Due Date", systemImage: "deskclock")
                         })
                         if self.hasDueDate {
                             DatePicker("Date/Time:", selection: $dueDate)
+                                .datePickerStyle(GraphicalDatePickerStyle())
+                                .labelsHidden()
                         }
                     }
                 }
@@ -75,6 +74,7 @@ struct AddTaskView: View {
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
         AddTaskView()
+            .preferredColorScheme(.dark)
     }
 }
 

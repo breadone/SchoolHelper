@@ -15,7 +15,7 @@ struct ContentView: View {
                     Image(systemName: "text.book.closed")
                     Text("Dashboard")
                 }
-            Classes()
+            Timetable()
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Timetable")

@@ -11,8 +11,10 @@ import CoreData
 struct DetailedTaskView: View {
     let task: TaskItem
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
     
     @State var EditMode = false
+    @State var TaskDone = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -32,13 +34,13 @@ struct DetailedTaskView: View {
 
             }
             Spacer()
-            Button(action: {deleteItem}, label: {
+            Button(action: {DoneTask(task: task)}, label: {
                     Text("Completed")
                         .foregroundColor(.white)
             })
                 .frame(width: 200, height: 50, alignment: .center)
                 .background(Color.green)
-            .cornerRadius(17)
+                .cornerRadius(17)
                 .padding()
         }
     }
@@ -49,9 +51,10 @@ struct DetailedTaskView: View {
         return(formatter1.string(from: date))
     }
     
-    func deleteItem(offsets: IndexSet) {
-        offsets.map { _ in task }.forEach(moc.delete)
+    func DoneTask(task: TaskItem) {
+        moc.delete(task)
         try? moc.save()
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
