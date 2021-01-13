@@ -21,36 +21,47 @@ struct AddTaskView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    TextField("", text: $name)
-                }
-                Section {
-                    TextEditor(text: $moreInfo)
-                        .font(.body)
-                        .lineLimit(15)
-                        .frame(height: 200)
-                }
-                Section {
-                    VStack {
-                        Toggle(isOn: $hasDueDate, label: {
-                            Label("Due Date", systemImage: "deskclock")
-                        })
-                        if self.hasDueDate {
-                            DatePicker("Date/Time:", selection: $dueDate)
-                                .datePickerStyle(GraphicalDatePickerStyle())
-                                .labelsHidden()
+            ZStack {
+                Form {
+                    Section {
+                        TextField("", text: $name)
+                    }
+                    Section {
+                        TextEditor(text: $moreInfo)
+                            .font(.body)
+                            .lineLimit(15)
+                            .frame(height: 200)
+                    }
+                    Section {
+                        VStack {
+                            Toggle(isOn: $hasDueDate, label: {
+                                Label("Due Date", systemImage: "deskclock")
+                            })
+                            if self.hasDueDate {
+                                DatePicker("Date/Time:", selection: $dueDate)
+                                    .datePickerStyle(GraphicalDatePickerStyle())
+                                    .labelsHidden()
+                            }
                         }
                     }
                 }
-            }
-            .navigationBarTitle("Add New Task")
-            .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
-                Text("Cancel")
-                    .foregroundColor(Color.red)
-            }), trailing: Button(action: {AddTask()}, label: {
-                Text("Done")
+                .navigationBarTitle("Add New Task")
+                .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
+                    Text("Cancel")
+                        .foregroundColor(Color.red)
+                }), trailing: Button(action: {AddTask()}, label: {
+                    Text("Done")
             }))
+                
+                VStack {
+                    Text("Name")
+                        .offset(x: -145, y: -280)
+                        .foregroundColor(.secondary)
+                    Text("Description")
+                        .offset(x: -125, y: -220)
+                        .foregroundColor(.secondary)
+                }
+            }
 
         }
     }
@@ -74,7 +85,6 @@ struct AddTaskView: View {
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
         AddTaskView()
-            .preferredColorScheme(.dark)
     }
 }
 

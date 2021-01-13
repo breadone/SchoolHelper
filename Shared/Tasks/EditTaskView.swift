@@ -21,36 +21,47 @@ struct EditTaskView: View {
 
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    TextField(task.name ?? "no title", text: $Newname)
+            ZStack {
+                Form {
+                    Section {
+                        TextField(task.name ?? "no title", text: $Newname)
+                    }
+                    Section {
+                        TextEditor(text: $NewmoreInfo)
+                            .font(.body)
+                            .lineLimit(15)
+                            .frame(height: 200)
+                    }
+    //                Section {
+    //                    VStack {
+    //                        Toggle(isOn: $hasDueDate, label: {
+    //                            Label("Due Date", systemImage: "deskclock")
+    //                        })
+    //                        if self.hasDueDate {
+    //                            DatePicker("Date/Time:", selection: $NewdueDate)
+    //                                .datePickerStyle(GraphicalDatePickerStyle())
+    //                                .labelsHidden()
+    //                        }
+    //                    }
+    //                }
                 }
-                Section {
-                    TextEditor(text: $NewmoreInfo)
-                        .font(.body)
-                        .lineLimit(15)
-                        .frame(height: 200)
+                .navigationBarTitle("Edit Task")
+                .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
+                    Text("Cancel")
+                        .foregroundColor(Color.red)
+                }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
+                    Text("Done")
+                }))
+                
+                VStack {
+                    Text("Name")
+                        .offset(x: -145, y: -280)
+                        .foregroundColor(.secondary)
+                    Text("Description")
+                        .offset(x: -125, y: -220)
+                        .foregroundColor(.secondary)
                 }
-//                Section {
-//                    VStack {
-//                        Toggle(isOn: $hasDueDate, label: {
-//                            Label("Due Date", systemImage: "deskclock")
-//                        })
-//                        if self.hasDueDate {
-//                            DatePicker("Date/Time:", selection: $NewdueDate)
-//                                .datePickerStyle(GraphicalDatePickerStyle())
-//                                .labelsHidden()
-//                        }
-//                    }
-//                }
             }
-            .navigationBarTitle("Edit Task")
-            .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
-                Text("Cancel")
-                    .foregroundColor(Color.red)
-            }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
-                Text("Done")
-            }))
         }
     }
     

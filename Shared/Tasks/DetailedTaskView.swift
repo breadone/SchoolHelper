@@ -38,7 +38,7 @@ struct DetailedTaskView: View {
                     Text("Completed")
                         .foregroundColor(.white)
             })
-                .frame(width: 200, height: 50, alignment: .center)
+                .frame(width: 280, height: 50, alignment: .center)
                 .background(Color.green)
                 .cornerRadius(17)
                 .padding()
@@ -71,5 +71,6 @@ struct DetailedTaskView_Previews: PreviewProvider {
         return NavigationView {
             DetailedTaskView(task: eTask)
         }
+        .preferredColorScheme(.dark)
     }
 }
