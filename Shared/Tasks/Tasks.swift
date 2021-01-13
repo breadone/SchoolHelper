@@ -50,7 +50,6 @@ struct TaskListView: View {
             .padding(.leading, 25)
             VStack(alignment: .leading){
                 Text(displayedTask.name ?? "no title")
-//                    .font(.title)
                     .font(.system(size: 18, weight: .heavy, design: .default))
                     .foregroundColor(.white)
                     .lineLimit(1)
@@ -59,7 +58,7 @@ struct TaskListView: View {
                     .lineLimit(2)
                     .foregroundColor(.white)
             }
-            .frame(width: 140, height: 80)
+            .frame(width: 150, height: 80, alignment: .leading)
             .padding(.leading, 15)
 //            Spacer()
             VStack(alignment: .center) {
@@ -69,7 +68,7 @@ struct TaskListView: View {
                 Text(DateToString(displayedTask.dateCreated!))
                     .foregroundColor(.white)
                     .padding(.bottom, 1)
-                Text("Due At:")
+                Text("Due:")
                     .foregroundColor(.white)
                     .font(.caption)
                 Text(DateToString(displayedTask.dueDate!)).foregroundColor(.white)
@@ -98,8 +97,8 @@ struct Tasks_Previews: PreviewProvider {
     
     static var previews: some View {
         let eTask = TaskItem(context: moc)
-        eTask.name = "test title"
-        eTask.desc = "test description"
+        eTask.name = "test name for task"
+        eTask.desc = "very long description test should go over 2 lines"
         eTask.dueDate = Date()
         eTask.dateCreated = Date()
         
