@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Subject" representedClassName=".Subject" syncable="YES" codeGenerationType="class">
+    <entity name="Subject" representedClassName=".Subject" syncable="YES">
         <attribute name="avgGrade" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="teacher" optional="YES" attributeType="String"/>
@@ -12,8 +12,14 @@
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TimetableEntry" representedClassName=".TimetableEntry" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
-        <element name="Subject" positionX="-1800.9140625" positionY="-1242.87109375" width="128" height="74"/>
+        <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="88"/>
         <element name="TaskItem" positionX="-1461.9765625" positionY="-1210.47265625" width="128" height="104"/>
+        <element name="TimetableEntry" positionX="-1644.61328125" positionY="-1163.828125" width="128" height="88"/>
     </elements>
 </model>

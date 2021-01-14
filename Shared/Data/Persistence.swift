@@ -9,6 +9,7 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
+    
 
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
@@ -21,11 +22,26 @@ struct PersistenceController {
             newTaskItem.name = "name"
             newTaskItem.isActive = true
         }
+        
+        for _ in 0..<10 {
+            let newTimetableEntry = TimetableEntry(context: viewContext)
+            newTimetableEntry.startTime = Date()
+            newTimetableEntry.startTime = Date()
+            newTimetableEntry.day = ""
+        }
+        
+        for _ in 0..<10 {
+            let newSubject = Subject(context: viewContext)
+            newSubject.name = ""
+            newSubject.teacher = ""
+            newSubject.avgGrade = 0
+        }
+        
+
+        
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }

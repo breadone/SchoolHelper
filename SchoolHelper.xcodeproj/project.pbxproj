@@ -15,6 +15,14 @@
 		460C59B225AA812B0077AF87 /* SchoolHelper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */; };
 		460C59D025AA9A3F0077AF87 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */; };
 		460C59D125AA9A3F0077AF87 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */; };
+		461388E325B0119D00F902A0 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388DF25B0119D00F902A0 /* Subject+CoreDataClass.swift */; };
+		461388E425B0119D00F902A0 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E025B0119D00F902A0 /* Subject+CoreDataProperties.swift */; };
+		461388E525B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E125B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift */; };
+		461388E625B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E225B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift */; };
+		461388E925B011B300F902A0 /* TimetableEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E125B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift */; };
+		461388EA25B011B300F902A0 /* TimetableEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E225B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift */; };
+		461388ED25B011B700F902A0 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388DF25B0119D00F902A0 /* Subject+CoreDataClass.swift */; };
+		461388EE25B011B700F902A0 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461388E025B0119D00F902A0 /* Subject+CoreDataProperties.swift */; };
 		466B433025AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */; };
 		466B433125AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */; };
 		466B433225AAB112008A24B0 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */; };
@@ -42,6 +50,10 @@
 		460C597525AA5E380077AF87 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		460C59A125AA7F940077AF87 /* SchoolHelper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolHelper.xcdatamodel; sourceTree = "<group>"; };
 		460C59CF25AA9A3F0077AF87 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		461388DF25B0119D00F902A0 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		461388E025B0119D00F902A0 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		461388E125B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		461388E225B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimetableEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		466B433825AAB227008A24B0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -77,12 +89,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461388F125B011BA00F902A0 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				461388DF25B0119D00F902A0 /* Subject+CoreDataClass.swift */,
+				461388E025B0119D00F902A0 /* Subject+CoreDataProperties.swift */,
+			);
+			path = Subject;
+			sourceTree = "<group>";
+		};
+		461388F425B011CB00F902A0 /* TimetableEntry */ = {
+			isa = PBXGroup;
+			children = (
+				461388E125B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift */,
+				461388E225B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift */,
+			);
+			path = TimetableEntry;
+			sourceTree = "<group>";
+		};
 		46706A7125AABC860049A70A /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				466B433825AAB227008A24B0 /* Persistence.swift */,
 				460C59A025AA7F940077AF87 /* SchoolHelper.xcdatamodeld */,
+				461388F125B011BA00F902A0 /* Subject */,
 				46DD403025ABAAB400E6240D /* TaskItem */,
+				461388F425B011CB00F902A0 /* TimetableEntry */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -257,11 +289,15 @@
 			files = (
 				466B433925AAB227008A24B0 /* Persistence.swift in Sources */,
 				460A66A625AD125200DB47E1 /* EditTaskView.swift in Sources */,
+				461388E525B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift in Sources */,
 				460C59D025AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
+				461388E325B0119D00F902A0 /* Subject+CoreDataClass.swift in Sources */,
 				46DD402A25ABA65000E6240D /* DetailedTaskView.swift in Sources */,
+				461388E425B0119D00F902A0 /* Subject+CoreDataProperties.swift in Sources */,
 				466B433025AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */,
 				460C59A225AA7F940077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
+				461388E625B0119D00F902A0 /* TimetableEntry+CoreDataProperties.swift in Sources */,
 				46F8F41F25A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42425A98A86008888E7 /* Timetable.swift in Sources */,
 				46F8F43125A9A602008888E7 /* Tasks.swift in Sources */,
@@ -277,17 +313,21 @@
 			files = (
 				466B433A25AAB227008A24B0 /* Persistence.swift in Sources */,
 				460A66A725AD125200DB47E1 /* EditTaskView.swift in Sources */,
+				461388EA25B011B300F902A0 /* TimetableEntry+CoreDataProperties.swift in Sources */,
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
 				460C59D125AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46DD402B25ABA65000E6240D /* DetailedTaskView.swift in Sources */,
 				466B433125AAB112008A24B0 /* TaskItem+CoreDataClass.swift in Sources */,
 				46F8F42025A98A57008888E7 /* Dashboard.swift in Sources */,
 				46F8F42525A98A86008888E7 /* Timetable.swift in Sources */,
+				461388E925B011B300F902A0 /* TimetableEntry+CoreDataClass.swift in Sources */,
+				461388ED25B011B700F902A0 /* Subject+CoreDataClass.swift in Sources */,
 				46F8F43225A9A602008888E7 /* Tasks.swift in Sources */,
 				460C59B225AA812B0077AF87 /* SchoolHelper.xcdatamodeld in Sources */,
 				46F8F40F25A98A01008888E7 /* SchoolHelperApp.swift in Sources */,
 				460C597725AA5E380077AF87 /* Me.swift in Sources */,
 				466B433325AAB112008A24B0 /* TaskItem+CoreDataProperties.swift in Sources */,
+				461388EE25B011B700F902A0 /* Subject+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +459,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 21w3;
 				PRODUCT_BUNDLE_IDENTIFIER = pradyunsetti.SchoolHelper;
 				PRODUCT_NAME = SchoolHelper;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -441,11 +482,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 21w3;
 				PRODUCT_BUNDLE_IDENTIFIER = pradyunsetti.SchoolHelper;
 				PRODUCT_NAME = SchoolHelper;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
