@@ -22,29 +22,32 @@ struct Tasks: View {
     var inactiveTasks: FetchedResults<TaskItem> {inactiveFetchRequest.wrappedValue}
     
     @State private var showingAddScreen = false
-    @State private var showingInactive = true
+    @State private var showingInactive = false
 
     var body: some View {
         NavigationView {
             ScrollView {
                 Text("Active Tasks")
+                    .font(.caption)
                 ForEach(activeTasks, id: \.self) { task in
-                        NavigationLink(destination: DetailedTaskView(task: task)) {
+                    NavigationLink(destination: DetailedTaskView(task: task)) {
                             TaskListView(displayedTask: task)
                     }
                 }
                 if showingInactive {
                     Text("Completed Tasks")
+                        .font(.caption)
                     ForEach(inactiveTasks, id: \.self) { task in
                             NavigationLink(destination: DetailedTaskView(task: task)) {
                                 TaskListView(displayedTask: task)
                         }
                     }
+                    .animation(.easeIn(duration: 0.25))
                 }
             }
-                .navigationBarTitle("Tasks")
-                .navigationBarItems(leading: Button(action: {self.showingInactive.toggle()}, label: {
-                    Text(showingInactive ? "Hide Completed" : "Show Completed") }),
+            .navigationBarTitle("Tasks: \(activeTasks.count)")
+            .navigationBarItems(leading: Button(action: {withAnimation{self.showingInactive.toggle()}}, label: {
+                    Text(showingInactive ? "Completed: On" : "Completed: Off") }),
                                 trailing: Button(action: {self.showingAddScreen.toggle()},label: {
                                                     Image(systemName: "plus")})
                 )
@@ -61,18 +64,16 @@ struct TaskListView: View {
     var body: some View {
         HStack() {
             VStack {
-                Button(action: {DoneItem(displayedTask, del: false)}, label: {
+                Button(action: {withAnimation{DoneItem(displayedTask, del: false)}}, label: {
                     Image(systemName: "checkmark.square")
-//                        .renderingMode(.original)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(.white)
                 })
                 .padding(.leading, 25)
                 .padding(.bottom, 5)
-                Button(action: {DoneItem(displayedTask, del: true)}, label: {
+                Button(action: {withAnimation{DoneItem(displayedTask, del: true)}}, label: {
                     Image(systemName: "trash")
-//                        .renderingMode(.original)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(.white)

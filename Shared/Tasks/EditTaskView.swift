@@ -9,16 +9,16 @@ import SwiftUI
 import CoreData
 
 struct EditTaskView: View {
+    let task: TaskItem
+    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
-    
-    let task: TaskItem
     
     @State private var Newname = ""
     @State private var NewmoreInfo = ""
     @State private var NewdueDate = Date()
     @State private var hasDueDate = false
-
+    
     var body: some View {
         NavigationView {
             ZStack {

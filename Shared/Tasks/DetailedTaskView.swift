@@ -19,6 +19,7 @@ struct DetailedTaskView: View {
         VStack(alignment: .center) {
                     Text(task.desc ?? "no description")
                         .padding()
+                        .padding(.top, 20)
                         .frame(width: 370, height: 550, alignment: .topLeading)
                         .navigationBarTitle(task.name ?? "no title", displayMode: .automatic)
                         .navigationBarItems(trailing: Button(action: {EditMode.toggle()}, label: {
@@ -34,7 +35,7 @@ struct DetailedTaskView: View {
                 .frame(width: 280, height: 50, alignment: .center)
                 .background(Color.green)
                 .cornerRadius(17)
-                .padding(.bottom, 25)
+                .padding(.bottom, 50)
         }
     }
         
