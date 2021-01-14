@@ -62,6 +62,8 @@ struct AddSubjectView: View {
         newSub.teacher = teacher
         newSub.colour = subjectColours[colour]
         
+        newSub.avgGrade = Int16(83) //TESTING ONLY OBV
+        
         try? moc.save()
         self.presentationMode.wrappedValue.dismiss()
     }

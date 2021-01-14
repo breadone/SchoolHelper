@@ -16,17 +16,14 @@ extension Subject {
         return NSFetchRequest<Subject>(entityName: "Subject")
     }
 
-    @NSManaged public var avgGrade: Int
     @NSManaged public var name: String?
     @NSManaged public var teacher: String?
     @NSManaged public var colour: String?
     @NSManaged public var id: UUID?
-    
-    @NSManaged public var colours: [String]?
-    
+    @NSManaged public var avgGrade: Int16
 
 }
 
-extension Subject : Identifiable {
+extension Subject: Identifiable {
 
 }

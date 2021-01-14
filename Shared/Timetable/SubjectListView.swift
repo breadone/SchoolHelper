@@ -18,8 +18,8 @@ struct SubjectListView: View {
                 ListCard(sub: sub)
             }
         }
+        .navigationBarTitle("Subjects")
     }
-
 }
 
 struct ListCard: View {
@@ -49,11 +49,12 @@ struct ListCard: View {
                     .foregroundColor(.white)
             }
             .padding()
+            Spacer()
             VStack {
-//                Text("AVG: \(sub.avgGrade)")
-//                    .font(.footnote)
-//                    .foregroundColor(.white)
-                Text("temp")
+                Text("AVG: \(sub.avgGrade)")
+                    .font(.footnote)
+                    .foregroundColor(.white)
+//                Text("temp")
             }
             Spacer()
         }
@@ -69,17 +70,7 @@ struct ListCard: View {
 }
 
 struct SubjectListView_Previews: PreviewProvider {
-    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-    
     static var previews: some View {
-        let tSub = Subject(context: moc)
-        tSub.name = "A2 Physics"
-        tSub.teacher = "MEE"
-        tSub.colour = "green"
-        tSub.avgGrade = 77
-        
-        return NavigationView {
-            ListCard(sub: tSub)
-        }
+        SubjectListView()
     }
 }
