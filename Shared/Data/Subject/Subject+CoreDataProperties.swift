@@ -19,6 +19,11 @@ extension Subject {
     @NSManaged public var avgGrade: Double
     @NSManaged public var name: String?
     @NSManaged public var teacher: String?
+    @NSManaged public var colour: String?
+    @NSManaged public var id: UUID?
+    
+    @NSManaged public var colours: [String]?
+    
 
 }
 

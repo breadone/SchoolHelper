@@ -35,6 +35,8 @@ struct PersistenceController {
             newSubject.name = ""
             newSubject.teacher = ""
             newSubject.avgGrade = 0
+            newSubject.colour = ""
+            
         }
         
 

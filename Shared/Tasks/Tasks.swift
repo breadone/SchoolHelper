@@ -129,21 +129,21 @@ struct TaskListView: View {
     }
 }
 
-//struct Tasks_Previews: PreviewProvider {
-//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-//
-//    static var previews: some View {
-//        let eTask = TaskItem(context: moc)
-//        eTask.name = "test name for task"
-//        eTask.desc = "very long description test should go over 2 lines"
-//        eTask.dueDate = Date()
-//        eTask.dateCreated = Date()
-//
-//        return NavigationView {
-////            TaskListView(displayedTask: eTask)
-//            Tasks()
-//        }
-////        .preferredColorScheme(.dark)
-//    }
-//}
+struct Tasks_Previews: PreviewProvider {
+    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+
+    static var previews: some View {
+        let eTask = TaskItem(context: moc)
+        eTask.name = "test name for task"
+        eTask.desc = "very long description test should go over 2 lines"
+        eTask.dueDate = Date()
+        eTask.dateCreated = Date()
+
+        return NavigationView {
+//            TaskListView(displayedTask: eTask)
+            Tasks()
+        }
+//        .preferredColorScheme(.dark)
+    }
+}
 

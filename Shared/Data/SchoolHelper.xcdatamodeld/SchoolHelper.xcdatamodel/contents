@@ -2,6 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Subject" representedClassName=".Subject" syncable="YES">
         <attribute name="avgGrade" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="colour" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="teacher" optional="YES" attributeType="String"/>
     </entity>
@@ -18,7 +20,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="88"/>
+        <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="104"/>
         <element name="TaskItem" positionX="-1461.9765625" positionY="-1210.47265625" width="128" height="104"/>
         <element name="TimetableEntry" positionX="-1644.61328125" positionY="-1163.828125" width="128" height="88"/>
     </elements>
