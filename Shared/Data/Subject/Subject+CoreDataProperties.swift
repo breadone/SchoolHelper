@@ -16,7 +16,7 @@ extension Subject {
         return NSFetchRequest<Subject>(entityName: "Subject")
     }
 
-    @NSManaged public var avgGrade: Double
+    @NSManaged public var avgGrade: Int
     @NSManaged public var name: String?
     @NSManaged public var teacher: String?
     @NSManaged public var colour: String?

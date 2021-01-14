@@ -11,9 +11,10 @@ import CoreData
 
 struct AddSubjectView: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
 
-    @State var name: String = "Name"
-    @State var teacher: String = "No Teacher"
+    @State var name: String = ""
+    @State var teacher: String = ""
     @State var colour: Int = 0
     
     var subjectColours = ["blue", "green", "red", "grey", "pink", "purple", "yellow", "orange"]
@@ -50,7 +51,7 @@ struct AddSubjectView: View {
             }
         }
         .navigationBarTitle("Add Subject")
-        .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {Text("Save")}))
+        .navigationBarItems(trailing: Button(action: {saveSubject()}, label: {Text("Save")}))
     }
     
     
@@ -61,6 +62,8 @@ struct AddSubjectView: View {
         newSub.teacher = teacher
         newSub.colour = subjectColours[colour]
         
+        try? moc.save()
+        self.presentationMode.wrappedValue.dismiss()
     }
     
 }

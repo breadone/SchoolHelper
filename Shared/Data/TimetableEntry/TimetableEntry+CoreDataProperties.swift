@@ -20,6 +20,7 @@ extension TimetableEntry {
     @NSManaged public var day: String?
     @NSManaged public var startTime: Date?
     @NSManaged public var endTime: Date?
+    @NSManaged public var subject: Subject?
 
 }
 

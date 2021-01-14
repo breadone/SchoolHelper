@@ -62,7 +62,6 @@ struct AddTaskView: View {
                         .foregroundColor(.secondary)
                 }
             }
-
         }
     }
     

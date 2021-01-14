@@ -13,14 +13,19 @@ struct SubjectListView: View {
     @FetchRequest(entity: Subject.entity(), sortDescriptors: []) var subjects: FetchedResults<Subject>
     
     var body: some View {
-        Text("test")
+        ScrollView {
+            ForEach(subjects, id: \.id) { sub in
+                ListCard(sub: sub)
+            }
+        }
     }
 
 }
 
 struct ListCard: View {
+    @Environment(\.managedObjectContext) var moc
+
     var sub: Subject
-    
     var colourDict = ["blue": Color.blue,
                       "green": Color.green,
                       "red": Color.red,
@@ -33,17 +38,34 @@ struct ListCard: View {
     
     var body: some View {
         HStack {
+            
             VStack(alignment: .leading) {
                 Text(sub.name ?? "")
                     .font(.title2)
                     .foregroundColor(.white)
+                    .bold()
+                Text(sub.teacher ?? "")
+                    .font(.body)
+                    .foregroundColor(.white)
             }
+            .padding()
+            VStack {
+//                Text("AVG: \(sub.avgGrade)")
+//                    .font(.footnote)
+//                    .foregroundColor(.white)
+                Text("temp")
+            }
+            Spacer()
         }
         .frame(width: 350, height: 100)
         .background(colourDict[sub.colour!])
         .cornerRadius(17)
-        .shadow(radius: 7)
     }
+    
+    func deleteItem(_ item: Subject) {
+        moc.delete(item)
+    }
+    
 }
 
 struct SubjectListView_Previews: PreviewProvider {
@@ -54,6 +76,7 @@ struct SubjectListView_Previews: PreviewProvider {
         tSub.name = "A2 Physics"
         tSub.teacher = "MEE"
         tSub.colour = "green"
+        tSub.avgGrade = 77
         
         return NavigationView {
             ListCard(sub: tSub)
