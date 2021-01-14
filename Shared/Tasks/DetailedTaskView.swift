@@ -34,7 +34,7 @@ struct DetailedTaskView: View {
                 .frame(width: 280, height: 50, alignment: .center)
                 .background(Color.green)
                 .cornerRadius(17)
-                .padding()
+                .padding(.bottom, 25)
         }
     }
         
