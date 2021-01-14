@@ -36,6 +36,8 @@ struct PersistenceController {
             newSubject.teacher = ""
             newSubject.avgGrade = 0
             newSubject.colour = ""
+            newSubject.gradeCount = 0
+            newSubject.totalGrade = 0
             
         }
         

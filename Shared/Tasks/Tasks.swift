@@ -83,8 +83,9 @@ struct TaskListView: View {
             }
             VStack(alignment: .leading){
                 Text(displayedTask.name ?? "no title")
-                    .font(.system(size: 18, weight: .heavy, design: .default))
+                    .font(.title2)
                     .foregroundColor(.white)
+                    .bold()
                     .lineLimit(1)
                 Text(displayedTask.desc ?? "")
                     .font(.body)
@@ -140,10 +141,8 @@ struct Tasks_Previews: PreviewProvider {
         eTask.dateCreated = Date()
 
         return NavigationView {
-//            TaskListView(displayedTask: eTask)
             Tasks()
         }
-//        .preferredColorScheme(.dark)
     }
 }
 

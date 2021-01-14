@@ -21,6 +21,8 @@ extension Subject {
     @NSManaged public var colour: String?
     @NSManaged public var id: UUID?
     @NSManaged public var avgGrade: Int16
+    @NSManaged public var totalGrade: Int16
+    @NSManaged public var gradeCount: Int16
 
 }
 
