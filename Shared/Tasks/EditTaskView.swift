@@ -14,8 +14,8 @@ struct EditTaskView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var Newname = ""
-    @State private var NewmoreInfo = ""
+    @State var Newname: String
+    @State var NewmoreInfo: String
     @State private var NewdueDate = Date()
     @State private var hasDueDate = false
     
@@ -94,7 +94,7 @@ struct EditTaskView_Previews: PreviewProvider {
         eTask.dueDate = Date()
 
         return NavigationView {
-            EditTaskView(task: eTask)
+            EditTaskView(task: eTask, Newname: eTask.name!, NewmoreInfo: eTask.desc!)
                 
         }
 

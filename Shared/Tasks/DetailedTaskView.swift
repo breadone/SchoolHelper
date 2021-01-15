@@ -26,7 +26,7 @@ struct DetailedTaskView: View {
                             Text("Edit")
                         }))
                         .sheet(isPresented: $EditMode, content: {
-                            EditTaskView(task: task)
+                            EditTaskView(task: task, Newname: task.name!, NewmoreInfo: task.desc!)
                     })
             Spacer()
             Button(action: {DoneTask(task)}, label: {

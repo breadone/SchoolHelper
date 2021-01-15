@@ -61,6 +61,8 @@ struct TaskListView: View {
     @Environment(\.managedObjectContext) var moc
     var displayedTask: TaskItem
     
+    @State private var showingDeleteAlert = false
+    
     var body: some View {
         HStack() {
             VStack {
@@ -72,7 +74,7 @@ struct TaskListView: View {
                 })
                 .padding(.leading, 25)
                 .padding(.bottom, 5)
-                Button(action: {withAnimation{DoneItem(displayedTask, del: true)}}, label: {
+                Button(action: {showingDeleteAlert.toggle()}, label: {
                     Image(systemName: "trash")
                         .resizable()
                         .frame(width: 20, height: 20)
@@ -98,13 +100,13 @@ struct TaskListView: View {
                 Text("Created:")
                     .foregroundColor(.white)
                     .font(.caption)
-                Text(DateToString(displayedTask.dateCreated!))
+                Text(DateToString(displayedTask.dateCreated ?? Date()))
                     .foregroundColor(.white)
                     .padding(.bottom, 1)
                 Text("Due:")
                     .foregroundColor(.white)
                     .font(.caption)
-                Text(DateToString(displayedTask.dueDate!)).foregroundColor(.white)
+                Text(DateToString(displayedTask.dueDate ?? Date())).foregroundColor(.white)
             }
             .padding()
             
@@ -112,6 +114,8 @@ struct TaskListView: View {
         .frame(height: 100)
         .background(Color.blue.opacity(17))
         .cornerRadius(17)
+        .alert(isPresented: $showingDeleteAlert, content: {
+                Alert(title: Text("Delete Task?"), primaryButton: .destructive(Text("Delete")) {DoneItem(displayedTask, del: true)}, secondaryButton: .cancel())})
     }
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
@@ -130,19 +134,19 @@ struct TaskListView: View {
     }
 }
 
-struct Tasks_Previews: PreviewProvider {
-    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-
-    static var previews: some View {
-        let eTask = TaskItem(context: moc)
-        eTask.name = "test name for task"
-        eTask.desc = "very long description test should go over 2 lines"
-        eTask.dueDate = Date()
-        eTask.dateCreated = Date()
-
-        return NavigationView {
-            Tasks()
-        }
-    }
-}
+//struct Tasks_Previews: PreviewProvider {
+//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//        let eTask = TaskItem(context: moc)
+//        eTask.name = "test name for task"
+//        eTask.desc = "very long description test should go over 2 lines"
+//        eTask.dueDate = Date()
+//        eTask.dateCreated = Date()
+//
+//        return NavigationView {
+//            Tasks()
+//        }
+//    }
+//}
 

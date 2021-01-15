@@ -153,7 +153,11 @@ struct AddTestForm: View {
     
     func saveResult() {
         subject.gradeCount += 1
-        subject.totalGrade += (Int16(mark) ?? 0) * (Int16(weight) ?? 0)
+        subject.avgGrade = Int16((Int16(mark) ?? 0 ) + subject.totalGrade / subject.gradeCount)
+        
+        let temp = (Double(mark)!) * (Double(weight)! / 100)
+        subject.totalGrade += Int16(temp)
+        
         
         try? moc.save()
         self.presentationMode.wrappedValue.dismiss()
