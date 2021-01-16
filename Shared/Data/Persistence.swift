@@ -29,7 +29,7 @@ struct PersistenceController {
             newTimetableEntry.startTime = Date()
             newTimetableEntry.day = ""
             newTimetableEntry.room = ""
-            newTimetableEntry.subject = Subject()
+            newTimetableEntry.subject = Subject(context: viewContext)
         }
         
         for _ in 0..<10 {

@@ -14,8 +14,10 @@ struct Timetable: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                Text("temp")
+            ScrollView {
+                ForEach(timeslots, id: \.self) {t in
+                    timetableListView(ttEntry: t)
+                }
                 .navigationBarTitle("Timetable")
                 .navigationBarItems(leading: NavigationLink(
                                         destination: SubjectListView(),
@@ -23,8 +25,8 @@ struct Timetable: View {
                                     trailing: NavigationLink(
                                         destination: AddTTEntry(),
                                         label: {
-                                            Text("Add Timetable")
-                                        }))
+                                            Image(systemName: "plus")
+                                    }))
             }
         }
     }
@@ -153,7 +155,8 @@ struct Timetable_Previews: PreviewProvider {
         TT.subject = eSub
         
         return NavigationView {
-            timetableListView(ttEntry: TT)
+            Timetable()
+            
         }
     }
 }
