@@ -29,8 +29,6 @@
 		466B433325AAB112008A24B0 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */; };
 		466B433925AAB227008A24B0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B433825AAB227008A24B0 /* Persistence.swift */; };
 		466B433A25AAB227008A24B0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B433825AAB227008A24B0 /* Persistence.swift */; };
-		4678E88825B01BFB004270EF /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678E88725B01BFB004270EF /* AddSubjectView.swift */; };
-		4678E88925B01BFB004270EF /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678E88725B01BFB004270EF /* AddSubjectView.swift */; };
 		4678E88F25B04096004270EF /* SubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678E88E25B04096004270EF /* SubjectListView.swift */; };
 		4678E89025B04096004270EF /* SubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4678E88E25B04096004270EF /* SubjectListView.swift */; };
 		46DD402A25ABA65000E6240D /* DetailedTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD402925ABA65000E6240D /* DetailedTaskView.swift */; };
@@ -61,7 +59,6 @@
 		466B432E25AAB112008A24B0 /* TaskItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		466B432F25AAB112008A24B0 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		466B433825AAB227008A24B0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		4678E88725B01BFB004270EF /* AddSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectView.swift; sourceTree = "<group>"; };
 		4678E88E25B04096004270EF /* SubjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListView.swift; sourceTree = "<group>"; };
 		46DD402925ABA65000E6240D /* DetailedTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTaskView.swift; sourceTree = "<group>"; };
 		46F8F3FB25A989FF008888E7 /* SchoolHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolHelperApp.swift; sourceTree = "<group>"; };
@@ -137,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				46F8F42325A98A86008888E7 /* Timetable.swift */,
-				4678E88725B01BFB004270EF /* AddSubjectView.swift */,
 				4678E88E25B04096004270EF /* SubjectListView.swift */,
 			);
 			path = Timetable;
@@ -314,7 +310,6 @@
 				466B433925AAB227008A24B0 /* Persistence.swift in Sources */,
 				460A66A625AD125200DB47E1 /* EditTaskView.swift in Sources */,
 				461388E525B0119D00F902A0 /* TimetableEntry+CoreDataClass.swift in Sources */,
-				4678E88825B01BFB004270EF /* AddSubjectView.swift in Sources */,
 				460C59D025AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46F8F41025A98A01008888E7 /* ContentView.swift in Sources */,
 				461388E325B0119D00F902A0 /* Subject+CoreDataClass.swift in Sources */,
@@ -340,7 +335,6 @@
 				466B433A25AAB227008A24B0 /* Persistence.swift in Sources */,
 				460A66A725AD125200DB47E1 /* EditTaskView.swift in Sources */,
 				461388EA25B011B300F902A0 /* TimetableEntry+CoreDataProperties.swift in Sources */,
-				4678E88925B01BFB004270EF /* AddSubjectView.swift in Sources */,
 				46F8F41125A98A01008888E7 /* ContentView.swift in Sources */,
 				460C59D125AA9A3F0077AF87 /* AddTaskView.swift in Sources */,
 				46DD402B25ABA65000E6240D /* DetailedTaskView.swift in Sources */,

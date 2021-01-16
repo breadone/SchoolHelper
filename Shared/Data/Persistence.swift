@@ -28,6 +28,8 @@ struct PersistenceController {
             newTimetableEntry.startTime = Date()
             newTimetableEntry.startTime = Date()
             newTimetableEntry.day = ""
+            newTimetableEntry.room = ""
+            newTimetableEntry.subject = Subject()
         }
         
         for _ in 0..<10 {

@@ -21,6 +21,7 @@ extension TimetableEntry {
     @NSManaged public var startTime: Date?
     @NSManaged public var endTime: Date?
     @NSManaged public var subject: Subject?
+    @NSManaged public var room: String?
 
 }
 
