@@ -92,6 +92,7 @@ struct AddTTEntry: View {
         tt.day = day
         tt.subject = sub
         tt.room = room
+        
         try? moc.save()
     }
     
@@ -103,6 +104,7 @@ struct AddTTEntry: View {
 }
 
 struct timetableListView: View {
+    @Environment(\.managedObjectContext) var moc
     var ttEntry: TimetableEntry
     
     var colourDict = ["blue": Color.blue,
@@ -135,6 +137,17 @@ struct timetableListView: View {
         .frame(width: 350, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
         .background(colourDict[ttEntry.subject?.colour ?? "blue"])
         .cornerRadius(17)
+        .contextMenu(ContextMenu(menuItems: {
+            Button(action: {withAnimation{deletettEntry(ttEntry)}}, label: {
+                Text("Delete Entry")
+                Image(systemName: "trash")
+            })
+        }))
+    }
+    
+    func deletettEntry(_ t: TimetableEntry) {
+        moc.delete(t)
+        try? moc.save()
     }
 }
 

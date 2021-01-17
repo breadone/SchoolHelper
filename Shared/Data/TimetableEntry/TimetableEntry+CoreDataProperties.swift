@@ -28,3 +28,4 @@ extension TimetableEntry {
 extension TimetableEntry : Identifiable {
 
 }
+

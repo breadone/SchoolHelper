@@ -37,7 +37,7 @@ struct SubjectListView: View {
         .navigationBarTitle("Subjects")
         .navigationBarItems(trailing: NavigationLink(
                                 destination: AddSubjectView(),
-                                label: { Text(" Add Subject") }))
+                                label: { Image(systemName: "plus") }))
     }
     
     func deleteItem(_ item: Subject) {

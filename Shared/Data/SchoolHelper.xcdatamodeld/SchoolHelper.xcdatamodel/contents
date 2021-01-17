@@ -21,7 +21,7 @@
         <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="room" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="subject" optional="YES" attributeType="Transformable"/>
+        <attribute name="subject" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Subject"/>
     </entity>
     <elements>
         <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="134"/>
