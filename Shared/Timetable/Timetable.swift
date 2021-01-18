@@ -10,7 +10,7 @@ import CoreData
 
 struct Timetable: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: TimetableEntry.entity(), sortDescriptors: []) var timeslots: FetchedResults<TimetableEntry>
+    @FetchRequest(entity: TimetableEntry.entity(), sortDescriptors: [NSSortDescriptor(key: "startTime", ascending: true)]) var timeslots: FetchedResults<TimetableEntry>
     
     var body: some View {
         NavigationView {
@@ -68,7 +68,7 @@ struct AddTTEntry: View {
                     ForEach(subIn, id: \.self) { subin in
                         Text(subin.name ?? "")
                             .foregroundColor(Color.white)
-                            .padding()
+                            .padding(.leading, 20).padding(.trailing, 20).padding(.top, 10).padding(.bottom, 10)
                             .background(colourDict[subin.colour ?? "blue"])
                             .cornerRadius(17)
                     }
@@ -124,7 +124,7 @@ struct timetableListView: View {
     var body: some View {
         HStack() {
             VStack(alignment: .leading) {
-                Text("startTime || endTime")
+                Text("\(DateToString(ttEntry.startTime!)) || \(DateToString(ttEntry.endTime!))")
                     .font(.caption)
                     .foregroundColor(.white)
                 Text(ttEntry.subject?.name ?? "no name")
@@ -153,6 +153,13 @@ struct timetableListView: View {
         moc.delete(t)
         try? moc.save()
     }
+    
+    private func DateToString(_ date: Date) -> String {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "KK:mm"
+        return(formatter1.string(from: date))
+    }
+    
 }
 
 struct Timetable_Previews: PreviewProvider {
@@ -172,7 +179,7 @@ struct Timetable_Previews: PreviewProvider {
         TT.subject = eSub
         
         return NavigationView {
-            Timetable()
+            AddTTEntry()
             
         }
     }
