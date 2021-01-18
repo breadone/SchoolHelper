@@ -89,23 +89,16 @@ struct AddTTEntry: View {
             }
         }
         .navigationBarTitle("Add Timetable Entry")
-        .navigationBarItems(trailing: Button(action: { saveTT(s: sub) }, label: {Text("Save")}))
+        .navigationBarItems(trailing: Button(action: { saveTT() }, label: {Text("Save")}))
     }
     
-    func saveTT(s: Subject) {
+    func saveTT() {
         let tt = TimetableEntry(context: self.moc)
         tt.startTime = sTime
         tt.endTime = eTime
         tt.day = day
         tt.room = room
-        
-        tt.subject = Subject(context: self.moc)
-        tt.subject?.name = s.name
-        tt.subject?.totalGrade = s.totalGrade
-        tt.subject?.avgGrade = s.avgGrade
-        tt.subject?.colour = s.colour
-        tt.subject?.gradeCount = s.gradeCount
-        tt.subject?.teacher = s.teacher
+        tt.subject = sub
         
         try? moc.save()
         presmode.wrappedValue.dismiss()
