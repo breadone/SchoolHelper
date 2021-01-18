@@ -214,7 +214,6 @@ struct AddSubjectView: View {
     
     private func saveSubject() {
         let newSub = Subject(context: self.moc)
-        newSub.id = UUID()
         newSub.name = name
         newSub.teacher = teacher
         newSub.totalGrade = Int16(0)

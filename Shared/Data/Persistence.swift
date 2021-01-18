@@ -18,8 +18,8 @@ struct PersistenceController {
         for _ in 0..<10 {
             let newTaskItem = TaskItem(context: viewContext)
             newTaskItem.dateCreated = Date()
-            newTaskItem.desc = "no description"
-            newTaskItem.name = "name"
+            newTaskItem.desc = ""
+            newTaskItem.name = ""
             newTaskItem.isActive = true
         }
         
@@ -29,7 +29,7 @@ struct PersistenceController {
             newTimetableEntry.startTime = Date()
             newTimetableEntry.day = ""
             newTimetableEntry.room = ""
-            newTimetableEntry.subject = Subject(context: viewContext)
+//            newTimetableEntry.subject = Subject()
         }
         
         for _ in 0..<10 {
@@ -40,7 +40,7 @@ struct PersistenceController {
             newSubject.colour = ""
             newSubject.gradeCount = 0
             newSubject.totalGrade = 0
-            
+//            newSubject.subjectTT = []
         }
         
 

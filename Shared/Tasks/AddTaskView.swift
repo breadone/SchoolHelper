@@ -21,12 +21,11 @@ struct AddTaskView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
                 Form {
-                    Section {
+                    Section(header: Text("Name")) {
                         TextField("", text: $name)
                     }
-                    Section {
+                    Section(header: Text("More Info")) {
                         TextEditor(text: $moreInfo)
                             .font(.body)
                             .lineLimit(15)
@@ -52,16 +51,6 @@ struct AddTaskView: View {
                 }), trailing: Button(action: {AddTask()}, label: {
                     Text("Done")
             }))
-                
-                VStack {
-                    Text("Name")
-                        .offset(x: -145, y: -280)
-                        .foregroundColor(.secondary)
-                    Text("Description")
-                        .offset(x: -125, y: -220)
-                        .foregroundColor(.secondary)
-                }
-            }
         }
     }
     

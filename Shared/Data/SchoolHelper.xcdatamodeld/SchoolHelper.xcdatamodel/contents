@@ -4,10 +4,15 @@
         <attribute name="avgGrade" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="colour" optional="YES" attributeType="String"/>
         <attribute name="gradeCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="teacher" optional="YES" attributeType="String"/>
         <attribute name="totalGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="subjectTT" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableEntry" inverseName="subject" inverseEntity="TimetableEntry"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="TaskItem" representedClassName=".TaskItem" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -21,7 +26,7 @@
         <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="room" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="subject" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Subject"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="subjectTT" inverseEntity="Subject"/>
     </entity>
     <elements>
         <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="134"/>

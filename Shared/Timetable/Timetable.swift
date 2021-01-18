@@ -34,7 +34,10 @@ struct Timetable: View {
 
 struct AddTTEntry: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Subject.entity(), sortDescriptors: []) var subIn: FetchedResults<Subject>
+    @Environment(\.presentationMode) var presmode
+    
+    @FetchRequest(entity: Subject.entity(), sortDescriptors: [])
+    private var subIn: FetchedResults<Subject>
     
     var colourDict = ["blue": Color.blue,
                       "green": Color.green,
@@ -54,11 +57,15 @@ struct AddTTEntry: View {
     @State private var eTime: Date = Date()
     @State private var day: String = ""
     
+    init() {
+        sub = Subject(context: moc)
+    }
+    
     var body: some View {
         Form {
             Section {
                 Picker("Select Subject", selection: $sub) {
-                    ForEach(subIn, id: \.id) { subin in
+                    ForEach(subIn, id: \.self) { subin in
                         Text(subin.name ?? "")
                             .foregroundColor(Color.white)
                             .padding()
@@ -82,25 +89,29 @@ struct AddTTEntry: View {
             }
         }
         .navigationBarTitle("Add Timetable Entry")
-        .navigationBarItems(trailing: Button(action: { saveTT() }, label: {Text("Save")}))
+        .navigationBarItems(trailing: Button(action: { saveTT(s: sub) }, label: {Text("Save")}))
     }
     
-    func saveTT() {
-        let tt = TimetableEntry(context: moc)
+    func saveTT(s: Subject) {
+        let tt = TimetableEntry(context: self.moc)
         tt.startTime = sTime
         tt.endTime = eTime
         tt.day = day
-        tt.subject = sub
         tt.room = room
         
-        try? moc.save()
-    }
-    
-    func dateFormatter(_ date: Date) -> Date {
+        tt.subject = Subject(context: self.moc)
+        tt.subject?.name = s.name
+        tt.subject?.totalGrade = s.totalGrade
+        tt.subject?.avgGrade = s.avgGrade
+        tt.subject?.colour = s.colour
+        tt.subject?.gradeCount = s.gradeCount
+        tt.subject?.teacher = s.teacher
         
-        return Date()
+        try? moc.save()
+        presmode.wrappedValue.dismiss()
     }
     
+
 }
 
 struct timetableListView: View {
@@ -134,7 +145,7 @@ struct timetableListView: View {
             .padding()
             Spacer()
         }
-        .frame(width: 350, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+        .frame(width: 350, height: 100)
         .background(colourDict[ttEntry.subject?.colour ?? "blue"])
         .cornerRadius(17)
         .contextMenu(ContextMenu(menuItems: {
