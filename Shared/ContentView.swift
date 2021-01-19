@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private func TodayAsString() -> String {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "EEEE"
+        return(formatter1.string(from: Date()))
+    }
+    
     var body: some View {
         TabView {
             Dashboard()
@@ -15,7 +22,7 @@ struct ContentView: View {
                     Image(systemName: "text.book.closed")
                     Text("Dashboard")
                 }
-            Timetable()
+            Timetable(day: TodayAsString())
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Timetable")
@@ -32,6 +39,7 @@ struct ContentView: View {
                 }
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

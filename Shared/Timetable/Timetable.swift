@@ -10,7 +10,15 @@ import CoreData
 
 struct Timetable: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: TimetableEntry.entity(), sortDescriptors: [NSSortDescriptor(key: "startTime", ascending: true)]) var timeslots: FetchedResults<TimetableEntry>
+//    @FetchRequest(entity: TimetableEntry.entity(), sortDescriptors: [NSSortDescriptor(key: "startTime", ascending: true)])
+    
+    var dayFetchRequest: FetchRequest<TimetableEntry>
+    
+    init(day: String) {
+        dayFetchRequest = FetchRequest<TimetableEntry>(entity: TimetableEntry.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TimetableEntry.startTime, ascending: true)], predicate: NSPredicate(format: "day = %@", day))
+    }
+    
+    var timeslots: FetchedResults<TimetableEntry> {dayFetchRequest.wrappedValue}
     
     var body: some View {
         NavigationView {
@@ -18,18 +26,23 @@ struct Timetable: View {
                 ForEach(timeslots, id: \.self) {t in
                     timetableListView(ttEntry: t)
                 }
-                .navigationBarTitle("Timetable")
+                .navigationBarTitle("\(TodayAsString())")
                 .navigationBarItems(leading: NavigationLink(
                                         destination: SubjectListView(),
                                         label: { Text("View Classes") }),
                                     trailing: NavigationLink(
                                         destination: AddTTEntry(),
-                                        label: {
-                                            Image(systemName: "plus")
-                                    }))
+                                        label: { Image(systemName: "plus") }))
             }
         }
     }
+    
+    private func TodayAsString() -> String {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "EEEE"
+        return(formatter1.string(from: Date()))
+    }
+    
 }
 
 struct AddTTEntry: View {
@@ -49,7 +62,7 @@ struct AddTTEntry: View {
                       "orange": Color.orange
     ]
     
-    var days = ["mon", "tue", "wed", "thurs", "fri", "sat", "sun"]
+    let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     @State private var room: String = ""
     @State private var sub: Subject = Subject()
@@ -78,14 +91,17 @@ struct AddTTEntry: View {
                 TextField("Enter Location", text: $room)
             }
             
-            Section {
+            Section() {
                 Picker("Day", selection: $day) {
-                    ForEach(0..<days.count) {
-                        Text(days[$0])
+                    ForEach(self.days, id: \.self) { day in
+                        Text(day)
                     }
                 }
-                DatePicker("Start Time", selection: $sTime, displayedComponents: [.hourAndMinute])
-                DatePicker("End Time", selection: $eTime, displayedComponents: [.hourAndMinute])
+                .id(self.days)
+                DatePicker("Start", selection: $sTime, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                DatePicker("End", selection: $eTime, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
             }
         }
         .navigationBarTitle("Add Timetable Entry")
@@ -162,25 +178,25 @@ struct timetableListView: View {
     
 }
 
-struct Timetable_Previews: PreviewProvider {
-    static let eMoc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-
-    static var previews: some View {
-        let eSub = Subject(context: eMoc)
-        eSub.name = "A2 Physics"
-        eSub.teacher = "MEE"
-        eSub.colour = "red"
-        
-        let TT = TimetableEntry(context: eMoc)
-        TT.day = "sun"
-        TT.startTime = Date().addingTimeInterval(-7200)
-        TT.endTime = Date().addingTimeInterval(7200)
-        TT.room = "T203"
-        TT.subject = eSub
-        
-        return NavigationView {
-            AddTTEntry()
-            
-        }
-    }
-}
+//struct Timetable_Previews: PreviewProvider {
+//    static let eMoc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//        let eSub = Subject(context: eMoc)
+//        eSub.name = "A2 Physics"
+//        eSub.teacher = "MEE"
+//        eSub.colour = "red"
+//
+//        let TT = TimetableEntry(context: eMoc)
+//        TT.day = "sun"
+//        TT.startTime = Date().addingTimeInterval(-7200)
+//        TT.endTime = Date().addingTimeInterval(7200)
+//        TT.room = "T203"
+//        TT.subject = eSub
+//
+//        return NavigationView {
+//            timetableListView(ttEntry: TT)
+//
+//        }
+//    }
+//}
