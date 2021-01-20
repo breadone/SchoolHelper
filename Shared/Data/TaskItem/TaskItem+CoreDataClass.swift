@@ -1,8 +1,8 @@
 //
 //  TaskItem+CoreDataClass.swift
-//  SchoolHelper
+//  SchoolHelper (iOS)
 //
-//  Created by Pradyun Setti on 10/01/21.
+//  Created by Pradyun Setti on 21/01/21.
 //
 //
 

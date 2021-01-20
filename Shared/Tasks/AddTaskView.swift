@@ -11,12 +11,13 @@ import CoreData
 struct AddTaskView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
+    @FetchRequest(entity: Subject.entity(), sortDescriptors: []) var subject: FetchedResults<Subject>
     
     @State private var name = ""
     @State private var dateCreated = Date()
     @State private var moreInfo = ""
     @State private var dueDate = Date()
-    
+    @State private var sub = Subject()
     @State private var hasDueDate = false
     
     var body: some View {
@@ -30,6 +31,13 @@ struct AddTaskView: View {
                             .font(.body)
                             .lineLimit(15)
                             .frame(height: 200)
+                    }
+                    Section() {
+                        Picker("Select Subject, leave blank for none", selection: $sub) {
+                            ForEach(subject, id: \.self) { sub in
+                                Text(sub.name ?? "")
+                            }
+                        }
                     }
                     Section {
                         VStack {
@@ -56,6 +64,7 @@ struct AddTaskView: View {
     
     func AddTask() {
         let newTask = TaskItem(context: self.moc)
+        newTask.subject = sub
         newTask.name = self.name
         newTask.dateCreated = Date()
         newTask.desc = self.moreInfo

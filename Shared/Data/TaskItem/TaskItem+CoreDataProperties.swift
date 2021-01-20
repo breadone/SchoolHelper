@@ -1,8 +1,8 @@
 //
 //  TaskItem+CoreDataProperties.swift
-//  SchoolHelper
+//  SchoolHelper (iOS)
 //
-//  Created by Pradyun Setti on 10/01/21.
+//  Created by Pradyun Setti on 21/01/21.
 //
 //
 
@@ -18,9 +18,10 @@ extension TaskItem {
 
     @NSManaged public var dateCreated: Date?
     @NSManaged public var desc: String?
-    @NSManaged public var name: String?
     @NSManaged public var dueDate: Date?
     @NSManaged public var isActive: Bool
+    @NSManaged public var name: String?
+    @NSManaged public var subject: Subject?
 
 }
 

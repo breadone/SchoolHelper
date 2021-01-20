@@ -62,6 +62,15 @@ struct TaskListView: View {
     var displayedTask: TaskItem
     
     @State private var showingDeleteAlert = false
+    var colourDict = ["blue": Color.blue,
+                      "green": Color.green,
+                      "red": Color.red,
+                      "grey": Color.gray,
+                      "pink": Color.pink,
+                      "purple": Color.purple,
+                      "yellow": Color.yellow,
+                      "orange": Color.orange
+    ]
     
     var body: some View {
         HStack() {
@@ -97,10 +106,10 @@ struct TaskListView: View {
             .frame(width: 150, height: 80, alignment: .leading)
             .padding(.leading, 15)
             VStack(alignment: .center) {
-                Text("Created:")
+                Text("Subject:")
                     .foregroundColor(.white)
                     .font(.caption)
-                Text(DateToString(displayedTask.dateCreated ?? Date()))
+                Text(displayedTask.subject?.name ?? "General")
                     .foregroundColor(.white)
                     .padding(.bottom, 1)
                 Text("Due:")
@@ -112,7 +121,7 @@ struct TaskListView: View {
             
         }
         .frame(height: 100)
-        .background(Color.blue.opacity(17))
+        .background(colourDict[displayedTask.subject?.colour ?? "blue"])
         .cornerRadius(17)
         .alert(isPresented: $showingDeleteAlert, content: {
                 Alert(title: Text("Delete Task?"), primaryButton: .destructive(Text("Delete")) {DoneItem(displayedTask, del: true)}, secondaryButton: .cancel())})

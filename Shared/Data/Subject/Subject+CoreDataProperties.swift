@@ -2,7 +2,7 @@
 //  Subject+CoreDataProperties.swift
 //  SchoolHelper (iOS)
 //
-//  Created by Pradyun Setti on 17/01/21.
+//  Created by Pradyun Setti on 21/01/21.
 //
 //
 
@@ -23,11 +23,8 @@ extension Subject {
     @NSManaged public var teacher: String?
     @NSManaged public var totalGrade: Int16
     @NSManaged public var subjectTT: NSSet?
+    @NSManaged public var subjectTask: NSSet?
 
-    public var subArray: [TimetableEntry] {
-        Array(subjectTT as? Set<TimetableEntry> ?? [])
-    }
-    
 }
 
 // MARK: Generated accessors for subjectTT
@@ -44,6 +41,23 @@ extension Subject {
 
     @objc(removeSubjectTT:)
     @NSManaged public func removeFromSubjectTT(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for subjectTask
+extension Subject {
+
+    @objc(addSubjectTaskObject:)
+    @NSManaged public func addToSubjectTask(_ value: Subject)
+
+    @objc(removeSubjectTaskObject:)
+    @NSManaged public func removeFromSubjectTask(_ value: Subject)
+
+    @objc(addSubjectTask:)
+    @NSManaged public func addToSubjectTask(_ values: NSSet)
+
+    @objc(removeSubjectTask:)
+    @NSManaged public func removeFromSubjectTask(_ values: NSSet)
 
 }
 

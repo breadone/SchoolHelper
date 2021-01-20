@@ -7,6 +7,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="teacher" optional="YES" attributeType="String"/>
         <attribute name="totalGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="subjectTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskItem" inverseName="subject" inverseEntity="TaskItem"/>
         <relationship name="subjectTT" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimetableEntry" inverseName="subject" inverseEntity="TimetableEntry"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -20,6 +21,7 @@
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="subjectTask" inverseEntity="Subject"/>
     </entity>
     <entity name="TimetableEntry" representedClassName=".TimetableEntry" syncable="YES">
         <attribute name="day" optional="YES" attributeType="String"/>
@@ -29,8 +31,8 @@
         <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="subjectTT" inverseEntity="Subject"/>
     </entity>
     <elements>
-        <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="134"/>
-        <element name="TaskItem" positionX="-1461.9765625" positionY="-1210.47265625" width="128" height="104"/>
+        <element name="Subject" positionX="-1864.2265625" positionY="-1270.0078125" width="126.35546875" height="163"/>
+        <element name="TaskItem" positionX="-1456.93359375" positionY="-1355.30859375" width="128" height="133"/>
         <element name="TimetableEntry" positionX="-1644.61328125" positionY="-1163.828125" width="128" height="104"/>
     </elements>
 </model>

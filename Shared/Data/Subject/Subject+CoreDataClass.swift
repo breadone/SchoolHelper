@@ -2,7 +2,7 @@
 //  Subject+CoreDataClass.swift
 //  SchoolHelper (iOS)
 //
-//  Created by Pradyun Setti on 17/01/21.
+//  Created by Pradyun Setti on 21/01/21.
 //
 //
 
