@@ -110,26 +110,32 @@ struct TaskListView: View {
                     .foregroundColor(.white)
                     .font(.caption)
                 Text(displayedTask.subject?.name ?? "General")
+                    .font(.subheadline)
                     .foregroundColor(.white)
                     .padding(.bottom, 1)
                 Text("Due:")
                     .foregroundColor(.white)
                     .font(.caption)
                 Text(DateToString(displayedTask.dueDate ?? Date())).foregroundColor(.white)
+                    .font(.subheadline)
             }
             .padding()
             
         }
-        .frame(height: 100)
+        .frame(width: 350, height: 100)
         .background(colourDict[displayedTask.subject?.colour ?? "blue"])
         .cornerRadius(17)
         .alert(isPresented: $showingDeleteAlert, content: {
-                Alert(title: Text("Delete Task?"), primaryButton: .destructive(Text("Delete")) {DoneItem(displayedTask, del: true)}, secondaryButton: .cancel())})
+                Alert(title:
+                        Text("Delete Task?"),
+                      primaryButton: .destructive(Text("Delete")) {DoneItem(displayedTask, del: true)},
+                      secondaryButton: .cancel())}
+        )
     }
     private func DateToString(_ date: Date) -> String {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "dd/MM, hh:mm"
-        return(formatter1.string(from: date))
+        return formatter1.string(from: date)
     }
     
     private func DoneItem(_ item: TaskItem, del: Bool) {
@@ -154,7 +160,7 @@ struct TaskListView: View {
 //        eTask.dateCreated = Date()
 //
 //        return NavigationView {
-//            Tasks()
+//            TaskListView(displayedTask: eTask)
 //        }
 //    }
 //}

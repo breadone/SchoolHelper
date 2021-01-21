@@ -143,11 +143,11 @@ struct timetableListView: View {
                 Text("\(DateToString(ttEntry.startTime!)) || \(DateToString(ttEntry.endTime!))")
                     .font(.caption)
                     .foregroundColor(.white)
-                Text(ttEntry.subject?.name ?? "no name")
+                Text(ttEntry.subject?.name ?? "Unknown Name")
                     .font(.title2)
                     .bold()
                     .foregroundColor(.white)
-                Text(ttEntry.room ?? "no room")
+                Text(ttEntry.room ?? "Unknown Room")
                     .font(.body)
                     .foregroundColor(.white)
             }

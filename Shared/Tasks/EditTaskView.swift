@@ -21,12 +21,11 @@ struct EditTaskView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
                 Form {
-                    Section {
+                    Section(header: Text("Name")) {
                         TextField(task.name ?? "no title", text: $Newname)
                     }
-                    Section {
+                    Section(header: Text("More Info")) {
                         TextEditor(text: $NewmoreInfo)
                             .font(.body)
                             .lineLimit(15)
@@ -46,22 +45,19 @@ struct EditTaskView: View {
     //                }
                 }
                 .navigationBarTitle("Edit Task")
-                .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
-                    Text("Cancel")
-                        .foregroundColor(Color.red)
-                }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
-                    Text("Done")
-                }))
-                
-                VStack {
-                    Text("Name")
-                        .offset(x: -145, y: -280)
-                        .foregroundColor(.secondary)
-                    Text("Description")
-                        .offset(x: -125, y: -220)
-                        .foregroundColor(.secondary)
+//                .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
+//                    Text("Cancel")
+//                        .foregroundColor(Color.red)
+//                }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
+//                    Text("Done")
+//                }))
+                .toolbar{
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(action: {EditTask(editedTask: task)}, label: {
+                            Text("Done")
+                        })
+                    }
                 }
-            }
         }
     }
     
