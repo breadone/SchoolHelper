@@ -5,8 +5,10 @@
 //  Created by Pradyun Setti on 10/01/21.
 //
 
+import Foundation
 import SwiftUI
 import CoreData
+import UserNotifications
 
 struct AddTaskView: View {
     @Environment(\.managedObjectContext) var moc
@@ -71,6 +73,10 @@ struct AddTaskView: View {
         newTask.dueDate = self.dueDate
         newTask.isActive = true
         
+        if hasDueDate {
+            AddAlert()
+        }
+        
         try? self.moc.save()
         DismissSheet()
     }
@@ -78,6 +84,19 @@ struct AddTaskView: View {
     func DismissSheet() {
         self.presentationMode.wrappedValue.dismiss()
     }
+    
+    func AddAlert() {
+        let content = UNMutableNotificationContent()
+        content.title = "Task Due!"
+        content.subtitle = name
+        content.sound = UNNotificationSound.default
+        
+        let delay = Calendar.current.dateComponents([.second], from: Date(), to: dueDate)        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: delay, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
 }
 
 struct AddTaskView_Previews: PreviewProvider {
