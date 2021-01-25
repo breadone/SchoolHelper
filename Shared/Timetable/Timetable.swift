@@ -26,7 +26,7 @@ struct Timetable: View {
                 ForEach(timeslots, id: \.self) {t in
                     timetableListView(ttEntry: t)
                 }
-                .navigationBarTitle("\(TodayAsString())")
+                .navigationBarTitle("\(Constants.TodayAsString())")
                 .navigationBarItems(leading: NavigationLink(
                                         destination: SubjectListView(),
                                         label: { Text("View Classes") }),
@@ -37,12 +37,6 @@ struct Timetable: View {
         }
     }
     
-    private func TodayAsString() -> String {
-        let formatter1 = DateFormatter()
-        formatter1.dateFormat = "EEEE"
-        return(formatter1.string(from: Date()))
-    }
-    
 }
 
 struct AddTTEntry: View {
@@ -51,16 +45,6 @@ struct AddTTEntry: View {
     
     @FetchRequest(entity: Subject.entity(), sortDescriptors: [])
     private var subIn: FetchedResults<Subject>
-    
-    var colourDict = ["blue": Color.blue,
-                      "green": Color.green,
-                      "red": Color.red,
-                      "grey": Color.gray,
-                      "pink": Color.pink,
-                      "purple": Color.purple,
-                      "yellow": Color.yellow,
-                      "orange": Color.orange
-    ]
     
     let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -82,7 +66,7 @@ struct AddTTEntry: View {
                         Text(subin.name ?? "")
                             .foregroundColor(Color.white)
                             .padding(.leading, 20).padding(.trailing, 20).padding(.top, 10).padding(.bottom, 10)
-                            .background(colourDict[subin.colour ?? "blue"])
+                            .background(Constants.colourDict[subin.colour ?? "blue"])
                             .cornerRadius(17)
                     }
                 }
@@ -125,22 +109,12 @@ struct AddTTEntry: View {
 
 struct timetableListView: View {
     @Environment(\.managedObjectContext) var moc
-    var ttEntry: TimetableEntry
-    
-    var colourDict = ["blue": Color.blue,
-                      "green": Color.green,
-                      "red": Color.red,
-                      "grey": Color.gray,
-                      "pink": Color.pink,
-                      "purple": Color.purple,
-                      "yellow": Color.yellow,
-                      "orange": Color.orange
-    ]
+    let ttEntry: TimetableEntry
     
     var body: some View {
         HStack() {
             VStack(alignment: .leading) {
-                Text("\(DateToString(ttEntry.startTime!)) || \(DateToString(ttEntry.endTime!))")
+                Text("\(Constants.DateToString(ttEntry.startTime!, format: "KK:mm")) || \(Constants.DateToString(ttEntry.endTime!, format: "KK:mm"))")
                     .font(.caption)
                     .foregroundColor(.white)
                 Text(ttEntry.subject?.name ?? "Unknown Name")
@@ -155,7 +129,7 @@ struct timetableListView: View {
             Spacer()
         }
         .frame(width: 350, height: 100)
-        .background(colourDict[ttEntry.subject?.colour ?? "blue"])
+        .background(Constants.colourDict[ttEntry.subject?.colour ?? "blue"])
         .cornerRadius(17)
         .contextMenu(ContextMenu(menuItems: {
             Button(action: {withAnimation{deletettEntry(ttEntry)}}, label: {
@@ -168,12 +142,6 @@ struct timetableListView: View {
     func deletettEntry(_ t: TimetableEntry) {
         moc.delete(t)
         try? moc.save()
-    }
-    
-    private func DateToString(_ date: Date) -> String {
-        let formatter1 = DateFormatter()
-        formatter1.dateFormat = "KK:mm"
-        return(formatter1.string(from: date))
     }
     
 }

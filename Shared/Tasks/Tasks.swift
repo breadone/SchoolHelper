@@ -62,15 +62,6 @@ struct TaskListView: View {
     var displayedTask: TaskItem
     
     @State private var showingDeleteAlert = false
-    var colourDict = ["blue": Color.blue,
-                      "green": Color.green,
-                      "red": Color.red,
-                      "grey": Color.gray,
-                      "pink": Color.pink,
-                      "purple": Color.purple,
-                      "yellow": Color.yellow,
-                      "orange": Color.orange
-    ]
     
     var body: some View {
         HStack() {
@@ -123,7 +114,7 @@ struct TaskListView: View {
             
         }
         .frame(width: 350, height: 100)
-        .background(colourDict[displayedTask.subject?.colour ?? "blue"])
+        .background(Constants.colourDict[displayedTask.subject?.colour ?? "blue"])
         .cornerRadius(17)
         .alert(isPresented: $showingDeleteAlert, content: {
                 Alert(title:

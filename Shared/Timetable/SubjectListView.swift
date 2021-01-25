@@ -50,15 +50,6 @@ struct ListCard: View {
     @Environment(\.managedObjectContext) var moc
 
     var sub: Subject
-    var colourDict = ["blue": Color.blue,
-                      "green": Color.green,
-                      "red": Color.red,
-                      "grey": Color.gray,
-                      "pink": Color.pink,
-                      "purple": Color.purple,
-                      "yellow": Color.yellow,
-                      "orange": Color.orange
-    ]
     
     var body: some View {
         HStack {
@@ -76,7 +67,7 @@ struct ListCard: View {
             .frame(width: 170, height: 100, alignment: .leading)
             Spacer()
             VStack(alignment: .trailing) {
-                Text("CURRENT: \(MarkToGrade(Int(avgGrade(sub)) ?? 0))")
+                Text("CURRENT: \(Constants.MarkToGrade(Int(avgGrade(sub)) ?? 0))")
                     .font(.body)
                     .foregroundColor(.white)
                     .bold()
@@ -90,32 +81,10 @@ struct ListCard: View {
             .padding()
         }
         .frame(width: 350, height: 100)
-        .background(colourDict[sub.colour!])
+        .background(Constants.colourDict[sub.colour!])
         .cornerRadius(17)
     }
     
-
-    
-    func MarkToGrade(_ mark: Int) -> String{
-        switch mark {
-        case 90...100:
-            return "A*"
-        case 80...89:
-            return "A"
-        case 70...79:
-            return "B"
-        case 60...69:
-            return "C"
-        case 50...59:
-            return "D"
-        case 40...49:
-            return "E"
-        case 0...39:
-            return "U"
-        default:
-            return "error"
-        }
-    }
     
     func avgGrade(_ s: Subject) -> String {
         if s.gradeCount == 0 {
@@ -173,18 +142,7 @@ struct AddSubjectView: View {
     @State var name: String = ""
     @State var teacher: String = ""
     @State var colour: Int = 0
-    
-    var subjectColours = ["blue", "green", "red", "grey", "pink", "purple", "yellow", "orange"]
-    var colourDict = ["blue": Color.blue,
-                      "green": Color.green,
-                      "red": Color.red,
-                      "grey": Color.gray,
-                      "pink": Color.pink,
-                      "purple": Color.purple,
-                      "yellow": Color.yellow,
-                      "orange": Color.orange
-    ]
-    
+        
     var body: some View {
         VStack {
             Form {
@@ -196,11 +154,11 @@ struct AddSubjectView: View {
                 }
                 Section {
                     Picker(selection: $colour, label: Text("Choose a Color")) {
-                        ForEach(0 ..< subjectColours.count) {
-                            Text(self.subjectColours[$0])
+                        ForEach(0 ..< Constants.subjectColours.count) {
+                            Text(Constants.subjectColours[$0])
                                 .padding()
                                 .frame(height: 25)
-                                .background(colourDict[subjectColours[$0]])
+                                .background(Constants.colourDict[Constants.subjectColours[$0]])
                                 .cornerRadius(17)
                         }
                     }
@@ -219,7 +177,7 @@ struct AddSubjectView: View {
         newSub.totalGrade = Int16(0)
         newSub.gradeCount = Int16(0)
         
-        newSub.colour = subjectColours[colour]
+        newSub.colour = Constants.subjectColours[colour]
                 
         try? moc.save()
         self.presentationMode.wrappedValue.dismiss()

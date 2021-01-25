@@ -45,17 +45,16 @@ struct EditTaskView: View {
     //                }
                 }
                 .navigationBarTitle("Edit Task")
-//                .navigationBarItems(leading: Button(action: {DismissSheet()}, label: {
-//                    Text("Cancel")
-//                        .foregroundColor(Color.red)
-//                }), trailing: Button(action: {EditTask(editedTask: task)}, label: {
-//                    Text("Done")
-//                }))
                 .toolbar{
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(action: { EditTask(editedTask: task) },
+                               label: { Text("Done") }
+                        )
+                    }
                     ToolbarItem(placement: .cancellationAction) {
-                        Button(action: {EditTask(editedTask: task)}, label: {
-                            Text("Done")
-                        })
+                        Button(action: {DismissSheet()},
+                               label: { Text("Cancel").foregroundColor(.red) }
+                        )
                     }
                 }
         }
