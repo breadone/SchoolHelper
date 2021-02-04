@@ -13,6 +13,9 @@ struct Tasks: View {
 
     var activeFetchRequest: FetchRequest<TaskItem>
     var inactiveFetchRequest: FetchRequest<TaskItem>
+    @State private var showingAddScreen = false
+    @State private var showingInactive = false
+
     init() {
         activeFetchRequest = FetchRequest<TaskItem>(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)], predicate: NSPredicate(format: "isActive == true"))
         
@@ -21,9 +24,7 @@ struct Tasks: View {
     var activeTasks: FetchedResults<TaskItem> {activeFetchRequest.wrappedValue}
     var inactiveTasks: FetchedResults<TaskItem> {inactiveFetchRequest.wrappedValue}
     
-    @State private var showingAddScreen = false
-    @State private var showingInactive = false
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -42,15 +43,18 @@ struct Tasks: View {
                                 TaskListView(displayedTask: task)
                         }
                     }
-                    .animation(.easeIn(duration: 0.25))
+                    .transition(.slide)
+//                    .animation(.easeIn(duration: 0.25))
                 }
             }
             .navigationBarTitle("Tasks: \(activeTasks.count)")
-            .navigationBarItems(leading: Button(action: {withAnimation{self.showingInactive.toggle()}}, label: {
-                    Text(showingInactive ? "Completed: On" : "Completed: Off") }),
-                                trailing: Button(action: {self.showingAddScreen.toggle()},label: {
-                                                    Image(systemName: "plus")})
-                )
+            .navigationBarItems(leading: Button(action: {withAnimation{self.showingInactive.toggle()}},
+                                                label: { Text(showingInactive ? "Completed: On" : "Completed: Off") }
+                                                ),
+                                trailing: Button(action: {self.showingAddScreen.toggle()},
+                                                 label: { Image(systemName: "plus") }
+                                                )
+                                )
             .sheet(isPresented: $showingAddScreen) { AddTaskView() }
         }
     }

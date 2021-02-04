@@ -19,7 +19,7 @@ struct AddTaskView: View {
     @State private var dateCreated = Date()
     @State private var moreInfo = ""
     @State private var dueDate = Date()
-    @State private var sub = Subject()
+    @State private var sub: Subject?
     @State private var hasDueDate = false
     
     var body: some View {
