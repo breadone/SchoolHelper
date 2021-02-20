@@ -36,11 +36,14 @@ struct taskModule: View {
     var tasks: FetchedResults<TaskItem> {taskFetchRequest.wrappedValue}
     
     var body: some View {
-        ScrollView {
-            Spacer(minLength: 10)
-            ForEach(tasks, id: \.self) { taskIn in
-                individualTaskView(task: taskIn)
+        VStack {
+            Spacer(minLength: 5)
+            ScrollView {
+                ForEach(tasks, id: \.self) { taskIn in
+                    individualTaskView(task: taskIn)
+                }
             }
+            Spacer(minLength: 5)
         }
         .frame(width: 150, height: 150)
         .background(RoundedRectangle(cornerRadius: 17))
@@ -60,11 +63,15 @@ struct timetableModule: View {
     var timetableEntries: FetchedResults<TimetableEntry> {ttDayFetchRequest.wrappedValue}
     
     var body: some View {
-        ScrollView {
-            Spacer(minLength: 20)
-            ForEach(timetableEntries, id: \.self) {tt in
-                ttView(ttEntry: tt)
+        VStack {
+            Spacer(minLength: 5)
+            ScrollView {
+                Spacer(minLength: 20)
+                ForEach(timetableEntries, id: \.self) {tt in
+                    ttView(ttEntry: tt)
+                }
             }
+            Spacer(minLength: 5)
         }
         .frame(width: 350, height: 350)
         .background(RoundedRectangle(cornerRadius: 17))
@@ -90,7 +97,7 @@ struct ttView: View {
                     .font(.body)
                     .foregroundColor(.white)
             }
-            .padding()
+            .padding(.bottom)
             Spacer()
         }
         .frame(width: 325, height: 100)
@@ -121,7 +128,8 @@ struct individualTaskView: View {
                     .foregroundColor(.white)
             }
             .padding(.leading, 10)
-            .padding(.top, 5)
+            .padding(.top, 2)
+            .padding(.bottom, 2)
             Spacer()
             Button(action: {withAnimation{doneTask(task)}}, label: {
                 Image(systemName: "checkmark.square")
