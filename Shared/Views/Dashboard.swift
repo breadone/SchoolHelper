@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Dashboard: View {
-    @Environment(\.managedObjectContext) var moc
     
     var taskFetchRequest: FetchRequest<TaskItem>
     var ttDayFetchRequest: FetchRequest<TimetableEntry>
@@ -94,13 +93,37 @@ struct ttView: View {
 }
 
 struct individualTaskView: View {
+    @Environment(\.managedObjectContext) var moc
     let task: TaskItem
     
     var body: some View {
-        Text(task.name ?? "no name")
-            .foregroundColor(.white)
-            .frame(width: 135, height: 50)
-            .background(RoundedRectangle(cornerRadius: 17).foregroundColor(Constants.colourDict[task.subject?.colour ?? "blue"]))
+        HStack {
+            VStack(alignment: .leading) {
+                Text(task.name ?? "no name")
+                    .font(.system(size: 15))
+                    .foregroundColor(.white)
+                Text(task.desc ?? "")
+                    .font(.system(size: 11))
+                    .foregroundColor(.white)
+            }
+            .padding(.leading, 10)
+            Spacer()
+            Button(action: {withAnimation{doneTask(task)}}, label: {
+                Image(systemName: "checkmark.square")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.white)
+            })
+            .padding(.trailing, 10)
+        }
+        .frame(width: 135, height: 50)
+        .background(RoundedRectangle(cornerRadius: 17).foregroundColor(Constants.colourDict[task.subject?.colour ?? "blue"]))
+    }
+    
+    func doneTask(_ t: TaskItem) {
+        t.isActive.toggle()
+        
+        try? moc.save()
     }
 }
 
