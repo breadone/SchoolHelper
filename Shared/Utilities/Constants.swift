@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct Constants {
+    static let darkModeGrey = Color(red: 64/255, green: 64/255, blue: 64/255)
+    
     static let subjectColours = ["blue", "green", "red", "grey", "pink", "purple", "yellow", "orange"]
     static let colourDict = ["blue": Color.blue,
                       "green": Color.green,

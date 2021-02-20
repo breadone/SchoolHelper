@@ -32,14 +32,26 @@ struct Dashboard: View {
     var body: some View {
         VStack {
             HStack {
+                ForEach(tasks, id: \.self) { task in
+                    Text(task.name ?? "")
+                }
+                .frame(width: 150, height: 150)
+                .background(RoundedRectangle(cornerRadius: 17))
+                .foregroundColor(Constants.darkModeGrey)
+                Spacer()
             }
+            .padding()
             ScrollView {
+                Spacer(minLength: 20)
                 ForEach(timetableEntries, id: \.self) {tt in
                     ttView(ttEntry: tt)
                 }
-                .background(RoundedRectangle(cornerRadius: 17))
             }
+            .frame(width: 350, height: 400)
+            .background(RoundedRectangle(cornerRadius: 17))
+            .foregroundColor(Constants.darkModeGrey)
         }
+        .navigationTitle(Text("Dashboard"))
     }
 }
 
@@ -64,15 +76,9 @@ struct ttView: View {
             .padding()
             Spacer()
         }
-        .frame(width: 350, height: 100)
+        .frame(width: 325, height: 100)
         .background(Constants.colourDict[ttEntry.subject?.colour ?? "blue"])
         .cornerRadius(17)
-        .contextMenu(ContextMenu(menuItems: {
-            Button(action: {withAnimation{deletettEntry(ttEntry)}}, label: {
-                Text("Delete Entry")
-                Image(systemName: "trash")
-            })
-        }))
     }
     
     func deletettEntry(_ t: TimetableEntry) {
