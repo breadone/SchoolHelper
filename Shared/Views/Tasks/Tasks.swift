@@ -17,9 +17,15 @@ struct Tasks: View {
     @State private var showingInactive = false
 
     init() {
-        activeFetchRequest = FetchRequest<TaskItem>(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)], predicate: NSPredicate(format: "isActive == true"))
+        activeFetchRequest = FetchRequest<TaskItem>(
+            entity: TaskItem.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)],
+            predicate: NSPredicate(format: "isActive == true"))
         
-        inactiveFetchRequest = FetchRequest<TaskItem>(entity: TaskItem.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)], predicate: NSPredicate(format: "isActive == false"))
+        inactiveFetchRequest = FetchRequest<TaskItem>(
+            entity: TaskItem.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dateCreated, ascending: false)],
+            predicate: NSPredicate(format: "isActive == false"))
     }
     var activeTasks: FetchedResults<TaskItem> {activeFetchRequest.wrappedValue}
     var inactiveTasks: FetchedResults<TaskItem> {inactiveFetchRequest.wrappedValue}
@@ -44,7 +50,7 @@ struct Tasks: View {
                         }
                     }
                     .transition(.slide)
-//                    .animation(.easeIn(duration: 0.25))
+//                    .animation(.linear)
                 }
             }
             .navigationBarTitle("Tasks: \(activeTasks.count)")

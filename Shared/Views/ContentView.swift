@@ -11,7 +11,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            Dashboard()
+            Dashboard(day: Constants.TodayAsString())
                 .tabItem {
                     Image(systemName: "text.book.closed")
                     Text("Dashboard")
