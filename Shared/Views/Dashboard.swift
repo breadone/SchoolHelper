@@ -8,54 +8,67 @@
 import SwiftUI
 
 struct Dashboard: View {
-    
+   
+    var body: some View {
+        NavigationView {
+            VStack {
+                HStack {
+                    taskModule()
+                    Spacer()
+                }
+                .padding()
+                timetableModule(day: Constants.TodayAsString())
+            }
+            .navigationTitle(Text("Dashboard"))
+        }
+    }
+}
+
+struct taskModule: View {
     var taskFetchRequest: FetchRequest<TaskItem>
-    var ttDayFetchRequest: FetchRequest<TimetableEntry>
-    
-    init(day: String) {
+
+    init() {
         taskFetchRequest = FetchRequest<TaskItem>(
             entity: TaskItem.entity(),
             sortDescriptors: [],
             predicate: NSPredicate(format: "isActive == true"))
-        
+    }
+    var tasks: FetchedResults<TaskItem> {taskFetchRequest.wrappedValue}
+    
+    var body: some View {
+        ScrollView {
+            Spacer(minLength: 10)
+            ForEach(tasks, id: \.self) { taskIn in
+                individualTaskView(task: taskIn)
+            }
+        }
+        .frame(width: 150, height: 150)
+        .background(RoundedRectangle(cornerRadius: 17))
+        .foregroundColor(Constants.darkModeGrey)
+    }
+}
+
+struct timetableModule: View {
+    var ttDayFetchRequest: FetchRequest<TimetableEntry>
+    
+    init(day: String) {
         ttDayFetchRequest = FetchRequest<TimetableEntry>(
             entity: TimetableEntry.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \TimetableEntry.startTime, ascending: true)],
             predicate: NSPredicate(format: "day = %@", day))
     }
-    
-    var tasks: FetchedResults<TaskItem> {taskFetchRequest.wrappedValue}
     var timetableEntries: FetchedResults<TimetableEntry> {ttDayFetchRequest.wrappedValue}
     
-    
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    ScrollView {
-                        Spacer(minLength: 10)
-                        ForEach(tasks, id: \.self) { taskIn in
-                            individualTaskView(task: taskIn)
-                        }
-                    }
-                    .frame(width: 150, height: 150)
-                    .background(RoundedRectangle(cornerRadius: 17))
-                    .foregroundColor(Constants.darkModeGrey)
-                    Spacer()
-                }
-                .padding()
-                ScrollView {
-                    Spacer(minLength: 20)
-                    ForEach(timetableEntries, id: \.self) {tt in
-                        ttView(ttEntry: tt)
-                    }
-                }
-                .frame(width: 350, height: 350)
-                .background(RoundedRectangle(cornerRadius: 17))
-                .foregroundColor(Constants.darkModeGrey)
+        ScrollView {
+            Spacer(minLength: 20)
+            ForEach(timetableEntries, id: \.self) {tt in
+                ttView(ttEntry: tt)
             }
-            .navigationTitle(Text("Dashboard"))
         }
+        .frame(width: 350, height: 350)
+        .background(RoundedRectangle(cornerRadius: 17))
+        .foregroundColor(Constants.darkModeGrey)
     }
 }
 
@@ -100,6 +113,7 @@ struct individualTaskView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(task.name ?? "no name")
+                    .lineLimit(1)
                     .font(.system(size: 15))
                     .foregroundColor(.white)
                 Text(task.desc ?? "")
@@ -107,6 +121,7 @@ struct individualTaskView: View {
                     .foregroundColor(.white)
             }
             .padding(.leading, 10)
+            .padding(.top, 5)
             Spacer()
             Button(action: {withAnimation{doneTask(task)}}, label: {
                 Image(systemName: "checkmark.square")
@@ -129,6 +144,6 @@ struct individualTaskView: View {
 
 struct Dashboard_Previews: PreviewProvider {
     static var previews: some View {
-        Dashboard(day: "\(Constants.DateToString(Date(), format: "EEEE"))")
+        Dashboard()
     }
 }
