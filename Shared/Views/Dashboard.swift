@@ -30,28 +30,33 @@ struct Dashboard: View {
     
     
     var body: some View {
-        VStack {
-            HStack {
-                ForEach(tasks, id: \.self) { task in
-                    Text(task.name ?? "")
+        NavigationView {
+            VStack {
+                HStack {
+                    ScrollView {
+                        Spacer(minLength: 10)
+                        ForEach(tasks, id: \.self) { taskIn in
+                            individualTaskView(task: taskIn)
+                        }
+                    }
+                    .frame(width: 150, height: 150)
+                    .background(RoundedRectangle(cornerRadius: 17))
+                    .foregroundColor(Constants.darkModeGrey)
+                    Spacer()
                 }
-                .frame(width: 150, height: 150)
+                .padding()
+                ScrollView {
+                    Spacer(minLength: 20)
+                    ForEach(timetableEntries, id: \.self) {tt in
+                        ttView(ttEntry: tt)
+                    }
+                }
+                .frame(width: 350, height: 350)
                 .background(RoundedRectangle(cornerRadius: 17))
                 .foregroundColor(Constants.darkModeGrey)
-                Spacer()
             }
-            .padding()
-            ScrollView {
-                Spacer(minLength: 20)
-                ForEach(timetableEntries, id: \.self) {tt in
-                    ttView(ttEntry: tt)
-                }
-            }
-            .frame(width: 350, height: 400)
-            .background(RoundedRectangle(cornerRadius: 17))
-            .foregroundColor(Constants.darkModeGrey)
+            .navigationTitle(Text("Dashboard"))
         }
-        .navigationTitle(Text("Dashboard"))
     }
 }
 
@@ -86,6 +91,17 @@ struct ttView: View {
         try? moc.save()
     }
     
+}
+
+struct individualTaskView: View {
+    let task: TaskItem
+    
+    var body: some View {
+        Text(task.name ?? "no name")
+            .foregroundColor(.white)
+            .frame(width: 135, height: 50)
+            .background(RoundedRectangle(cornerRadius: 17).foregroundColor(Constants.colourDict[task.subject?.colour ?? "blue"]))
+    }
 }
 
 struct Dashboard_Previews: PreviewProvider {
